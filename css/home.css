@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand&display=swap');
+
+/* Navbar */
+.navbar-brand {
+    font-family: 'Courgette', cursive;
+    font-size: 32px;
+}
+
+.dropdown {
+    font-family: 'Courgette', cursive;
+}
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+/* content home */
+* {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.card {
+    transition: transform .2s;
+
+}
+
+.card:hover {
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+    cursor: pointer;
+}
