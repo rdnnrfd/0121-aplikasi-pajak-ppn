@@ -81,7 +81,7 @@ require('config.php');
                                     <div class="card-body">
                                         <h5 class="card-title"><i class="fas fa-info-circle"></i> Informasi</h5>
                                     </div>
-                                    <a href="#" class="btn btn-danger bg-danger">Lihat <i class="fas fa-angle-right"></i></a>
+                                    <a href="informasi.php" class="btn btn-danger bg-danger">Lihat <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
                             <div class="col">
