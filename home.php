@@ -89,7 +89,7 @@ require('config.php');
                                     <div class="card-body">
                                         <h5 class="card-title"><i class="fas fa-cogs"></i> Setting</h5>
                                     </div>
-                                    <a href="#" class="btn btn-secondary bg-secondary">Lihat <i class="fas fa-angle-right"></i></a>
+                                    <a href="setting.php" class="btn btn-secondary bg-secondary">Lihat <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
