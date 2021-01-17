@@ -3,7 +3,6 @@
 include("auth_session.php");
 require('config.php');
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -59,7 +58,7 @@ require('config.php');
                             </h5>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="user_update_aksi.php" method="post" id="user" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="username">Username</label>
                                     <input id="username" type="text" class="form-control" name="username" value="<?php echo $data['username']; ?>">

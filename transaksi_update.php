@@ -2,6 +2,7 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 require('config.php');
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,12 +50,12 @@ require('config.php');
                     <div class="card-header">Edit Transaction</div>
                     <div class="card-body">
                         <?php
-                        $id = $_GET['id'];
+                        $IdTransaksi = $_GET['IdTransaksi'];
 
-                        $result = mysqli_query($conn, "SELECT * FROM transaksi WHERE id='$id'");
+                        $result = mysqli_query($conn, "SELECT * FROM transaksi WHERE IdTransaksi='$IdTransaksi'");
                         while ($data = mysqli_fetch_array($result)) {
                         ?>
-                            <form action="transaksi_update.php" method="post" id="transaksi" enctype="multipart/form-data">
+                            <form action="transaksi_update_aksi.php" method="post" id="transaksi" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="IdTransaksi">ID Transaksi</label>
                                     <input type="text" name="IdTransaksi" value="<?php echo $data['IdTransaksi']; ?>" class="form-control" readonly>

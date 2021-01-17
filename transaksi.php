@@ -86,15 +86,15 @@ require('config.php');
                                 ?>
                                     <tr>
                                         <th><?= $no++; ?></th>
-                                        <td><?= $data['IdTransaksi']; ?></td>
-                                        <td><?= $data['NamaBarang']; ?></td>
-                                        <td><?= $data['Qty']; ?></td>
-                                        <td><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
-                                        <td><?= "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
-                                        <td><?= "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
-                                        <td><?= "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                                        <td><?php echo $data['IdTransaksi']; ?></td>
+                                        <td><?php echo $data['NamaBarang']; ?></td>
+                                        <td><?php echo $data['Qty']; ?></td>
+                                        <td><?php echo "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
+                                        <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
+                                        <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
+                                        <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="transaksi_update.php?id=<?= $data['id']; ?>">
+                                            <a class="btn btn-success btn-sm" href="transaksi_update.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
                                             <a class="btn btn-danger btn-sm" href="transaksi_delete.php?id=<?= $data['id']; ?>">

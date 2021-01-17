@@ -109,7 +109,6 @@ require('config.php');
                             echo "<div class='container'>
                                     <p>You are Created successfully. <a href='transaksi.php' class='btn btn-success'> View </a></p>
                                 </div>";
-                            // echo "<br/>User added successfully. <a href='barang.php' class='btn btn-success' role='button' >View Data</a>";
                         }
                         ?>
                     </div>
