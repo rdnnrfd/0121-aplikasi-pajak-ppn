@@ -2,7 +2,18 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 require('config.php');
+
+if ($_GET) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM persediaan WHERE id ='$id'";
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query);
+} else {
+    echo "Nomor Transaksi Tidak Terbaca";
+    exit;
+}
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -27,7 +38,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/barang.css">
 
-    <title>Daftar Persediaan</title>
+    <title>Detail Item</title>
 </head>
 
 <body>
@@ -35,51 +46,63 @@ require('config.php');
     <?php include("components/navbar.php"); ?>
     <!-- End of Navbar -->
 
-    <!-- Content -->
-    <div class="container" id="content">
-        <article id="beranda" class="container py-5">
-            <h2>Hallo!</h2>
-            <br>
-            <hr>
-            <!-- body -->
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a short card.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                        </div>
-                    </div>
-
+    <!-- Main -->
+    <div class="container-fluid py-3">
+        <div class="row">
+            <!-- Body -->
+            <div class="col-md">
+                <div class="container">
+                    <h5 class="d-flex justify-content-between align-items-center">
+                        Detail Item
+                        <a href="persediaan.php" class="btn btn-secondary"> Back</a>
+                    </h5>
+                    <hr />
                 </div>
+                <div class="container col-lg-9">
+                    <br>
+                    <?php
+                    $id = $_GET['id'];
+                    $query = mysqli_query($conn, "SELECT * FROM persediaan WHERE id='$id'");
+                    while ($data = mysqli_fetch_array($query)) {
+                    ?>
+                        <div class="card" style="max-width: 900px;">
+                            <div class="card-header">
+                                <h3>
+                                    <?= $data['NamaBarang']; ?>
+                                </h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row md-1">
+                                    <div class="col-md-4">
+                                        <td><img src="assets/images/<?= $data['Foto'] ?>" width="300"></td>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <small class="text-muted">Kode</small>
+                                            <h5 class="card-title"><?= $data['KodeBarang']; ?></h5>
+
+                                            <small class="text-muted">Deskripsi</small>
+                                            <p class="card-text"><?= $data['Deskripsi']; ?></p>
+
+                                            <small class="text-muted">Harga</small>
+                                            <h4><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            <?php
+                    }
+                    mysqli_close($conn);
+            ?>
             </div>
-            <!-- end body -->
-        </article>
+        </div>
+        <!-- End Body -->
     </div>
-    <!-- End Content -->
+    <!-- End Main Body -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

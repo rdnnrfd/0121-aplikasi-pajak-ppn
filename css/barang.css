@@ -2,12 +2,6 @@
 
 * {
     font-family: 'Quicksand', sans-serif;
-    list-style: none;
-    text-decoration: none;
-}
-
-.table {
-    text-align: center;
 }
 
 /* Navbar */
@@ -33,8 +27,13 @@
     cursor: pointer;
 }
 
+.active,
 .bar:hover {
     background: rgb(255, 255, 255);
     padding-left: 25px;
     color: rgb(4, 3, 3);
+}
+
+.table {
+    text-align: center;
 }

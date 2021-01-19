@@ -28,6 +28,9 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/laporan.css">
 
+    <!-- JS -->
+    <script src="js/main.js"></script>
+
     <title>Laporan</title>
 </head>
 

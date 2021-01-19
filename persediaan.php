@@ -26,12 +26,9 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/transaksi.css">
+    <link rel="stylesheet" type="text/css" href="css/barang.css">
 
-    <!-- JS -->
-    <script src="js/main.js"></script>
-
-    <title>Data Transaksi</title>
+    <title>Data Persediaan</title>
 </head>
 
 <body>
@@ -48,59 +45,74 @@ require('config.php');
                 <!-- End Sidebar -->
             </div>
             <!-- Body -->
-
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
-                            Data Transaksi
-                            <a href="transaksi_create.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Tambah Transaksi</a>
+                            Data Persediaan
+                            <a href="persediaan_create.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Tambah Persediaan</a>
                         </h5>
                     </div>
                     <div class="card-body">
+                        <?php
+                        if (isset($_GET['alert'])) {
+                            if ($_GET['alert'] == 'gagal_ekstensi') {
+                        ?>
+                                <div class="alert alert-warning alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-warning"></i> Peringatan!</h4>
+                                    Ekstensi Tidak Diperbolehkan.
+                                </div>
+                            <?php
+                            } elseif ($_GET['alert'] == "gagal_ukuran") {
+                            ?>
+                                <div class="alert alert-warning alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-check"></i> Peringatan!</h4>
+                                    Ukuran File Terlalu Besar.
+                                </div>
+                            <?php
+                            } elseif ($_GET['alert'] == "berhasil") {
+                            ?>
+                                <div class="alert alert-success alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-check"></i> Success!</h4>
+                                    Berhasil Disimpan.
+                                </div>
+                        <?php
+                            }
+                        }
+                        ?>
+
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ID Transaksi</th>
+                                    <th>Kode Barang</th>
                                     <th>Nama Barang</th>
-                                    <th>Qty</th>
                                     <th>Harga</th>
-                                    <th>Nominal</th>
-                                    <th>PPN</th>
-                                    <th>Total</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($conn, "SELECT * FROM transaksi");
+                                $query = mysqli_query($conn, "SELECT * FROM persediaan");
                                 $no = 1;
-                                $PPN = 0;
-                                $Nominal = 0;
-                                $Total = 0;
-                                $TotalTransaksi = 0;
-
-                                while ($data = $query->fetch_assoc()) {
-                                    $Nominal = $data['Qty'] * $data['Harga'];
-                                    $PPN = $Nominal * 10 / 100;
-                                    $Total = $Nominal + $PPN;
-                                    $TotalTransaksi += $Total;
+                                while ($data = mysqli_fetch_array($query)) {
                                 ?>
                                     <tr>
-                                        <th><?= $no++; ?></th>
-                                        <td><?php echo $data['IdTransaksi']; ?></td>
+                                        <th><?php echo $no++; ?></th>
+                                        <td><?php echo $data['KodeBarang']; ?></td>
                                         <td><?php echo $data['NamaBarang']; ?></td>
-                                        <td><?php echo $data['Qty']; ?></td>
                                         <td><?php echo "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
-                                        <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
-                                        <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
-                                        <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="transaksi_update.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">
+                                            <a class="btn btn-secondary btn-sm" href="persediaan_detail.php?id=<?= $data['id']; ?>">
+                                                <i class="far fa-eye" aria-hidden="true"></i>
+                                            </a> |
+                                            <a class="btn btn-success btn-sm" href="persediaan_update.php?id=<?= $data['id']; ?>">
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
-                                            <a class="btn btn-danger btn-sm" href="transaksi_delete.php?id=<?= $data['id']; ?>">
+                                            <a class="btn btn-danger btn-sm" href="persediaan_delete.php?id=<?= $data['id']; ?>" onclick="return confirm('Are you sure to delete?')">
                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                             </a>
                                         </td>
@@ -110,13 +122,6 @@ require('config.php');
                                 }
                                 mysqli_close($conn);
                                 ?>
-                            <tfoot>
-                                <tr>
-                                    <th colspan="7" class="table-active">Total Transaksi</th>
-                                    <th class="table-active"><?php echo "Rp " . number_format($TotalTransaksi, 2, ",", "."); ?></th>
-                                </tr>
-                            </tfoot>
-
                             </tbody>
                         </table>
                     </div>

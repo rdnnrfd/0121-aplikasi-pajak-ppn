@@ -21,3 +21,19 @@
 .nav-link {
     text-transform: uppercase;
 }
+
+.bar {
+    margin-right: 16px;
+    transition-duration: .4s;
+    background: rgb(18, 31, 33);
+    padding-left: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.active,
+.bar:hover {
+    background: rgb(255, 255, 255);
+    padding-left: 25px;
+    color: rgb(4, 3, 3);
+}

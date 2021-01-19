@@ -2,8 +2,8 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 require('config.php');
-?>
 
+?>
 <!doctype html>
 <html lang="en">
 
@@ -26,12 +26,9 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/users.css">
+    <link rel="stylesheet" type="text/css" href="css/transaksi.css">
 
-    <!-- JS -->
-    <script src="js/main.js"></script>
-
-    <title>Data User</title>
+    <title>Add Item</title>
 </head>
 
 <body>
@@ -48,58 +45,69 @@ require('config.php');
                 <!-- End Sidebar -->
             </div>
             <!-- Body -->
+
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="d-flex justify-content-between align-items-center">
-                            Data User
-                            <a href="user_create.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Add User</a>
-                        </h5>
-                    </div>
+                    <div class="card-header">New Item</div>
                     <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $query = "SELECT * FROM user";
-                                $result = mysqli_query($conn, $query);
-                                $no = 1;
-                                while ($data = mysqli_fetch_array($result)) {
-                                ?>
-                                    <tr>
-                                        <th><?= $no++; ?></th>
-                                        <td><?= $data['username'] ?></td>
-                                        <td><?= $data['email'] ?></td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="user_update.php?id=<?= $data['id'] ?>">
-                                                <i class="fa fa-pen-square sm-3" aria-hidden="true"></i>
-                                            </a> |
-                                            <a class="btn btn-danger btn-sm" href="user_delete.php?id=<?= $data['id'] ?>">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                                mysqli_close($conn);
-                                ?>
-                            </tbody>
-                        </table>
+
+                        <?php
+                        $baru = $conn->query("SELECT KodeBarang FROM persediaan ORDER BY KodeBarang DESC");
+                        $KodeBarang = mysqli_fetch_array($baru);
+                        $kb = $KodeBarang['KodeBarang'];
+                        $urut = substr($kb, 6, 8);
+                        $tambah = (int) $urut + 1;
+                        $bln = date('m');
+
+                        if (strlen($tambah) == 1) {
+                            $format = "KB" . $bln . "-00" . $tambah;
+                        } elseif (strlen($tambah) == 2) {
+                            $format = "KB" . $bln . "-0" . $tambah;
+                        } else {
+                            $format = "KB" . $bln . "-" . $tambah;
+                        }
+                        ?>
+
+                        <form action="persediaan_create_aksi.php" method="post" id="persediaan" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="KodeBarang">KodeBarang</label>
+                                <input type="text" name="KodeBarang" id="KodeBarang" value="<?= $format ?>" class="form-control" required="required" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Foto">Foto</label>
+                                <div class="form-group">
+                                    <input type="file" name="Foto" id="Foto" required="required">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="NamaBarang">Nama Barang</label>
+                                <input type="text" class="form-control" id="NamaBarang" name="NamaBarang" required="required">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Deskripsi">Deskripsi</label>
+                                <textarea class="form-control" name="Deskripsi" id="Deskripsi" style="height: 100px"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Harga">Harga</label>
+                                <input type="number" class="form-control" id="Harga" name="Harga" required="required">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" name="" class="btn btn-primary" value="Create">
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
+            <!-- End Body -->
         </div>
-        <!-- End Body -->
     </div>
     <!-- End Main Body -->
-    <!-- End Content -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
