@@ -80,20 +80,29 @@ if ($_GET) {
                                 <input type="text" name="IdTransaksi" value="<?= $format ?>" class="form-control" readonly>
                             </div>
 
-                            <div class="form-group">
-                                <label for="NamaBarang">Nama Barang</label>
-                                <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>">
-                            </div>
+                            <?php
+                            $result = mysqli_query($conn, "SELECT NamaBarang, Harga FROM persediaan");
+                            while ($data = mysqli_fetch_array($result)) {
+                            ?>
 
-                            <div class="form-group">
-                                <label for="Qty">Qty</label>
-                                <input type="number" class="form-control" name="Qty">
-                            </div>
+                                <div class="form-group">
+                                    <label for="NamaBarang">Nama Barang</label>
+                                    <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>">
+                                </div>
 
-                            <div class="form-group">
-                                <label for="Harga">Harga</label>
-                                <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
-                            </div>
+                                <div class="form-group">
+                                    <label for="Qty">Qty</label>
+                                    <input type="number" class="form-control" name="Qty">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Harga">Harga</label>
+                                    <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
+                                </div>
+
+                            <?php
+                            }
+                            ?>
 
                             <div class="form-group">
                                 <input type="submit" name="Submit" class="btn btn-primary" value="Create">

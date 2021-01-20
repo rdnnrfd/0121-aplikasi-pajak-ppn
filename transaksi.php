@@ -28,9 +28,6 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/transaksi.css">
 
-    <!-- JS -->
-    <script src="js/main.js"></script>
-
     <title>Data Transaksi</title>
 </head>
 
@@ -54,7 +51,7 @@ require('config.php');
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Data Transaksi
-                            <a href="transaksi_create.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Tambah Transaksi</a>
+                            <a href="home.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Tambah Transaksi</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -63,7 +60,6 @@ require('config.php');
                                 <tr>
                                     <th>#</th>
                                     <th>ID Transaksi</th>
-                                    <th>Nama Barang</th>
                                     <th>Nominal</th>
                                     <th>PPN</th>
                                     <th>Total</th>
@@ -72,7 +68,7 @@ require('config.php');
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($conn, "SELECT * FROM transaksi");
+                                $query = mysqli_query($conn, "SELECT * FROM transaksi ");
                                 $no = 1;
                                 $PPN = 0;
                                 $Nominal = 0;
@@ -88,7 +84,6 @@ require('config.php');
                                     <tr>
                                         <th><?= $no++; ?></th>
                                         <td><?php echo $data['IdTransaksi']; ?></td>
-                                        <td><?php echo $data['NamaBarang']; ?></td>
                                         <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
@@ -99,24 +94,22 @@ require('config.php');
                                             <a class="btn btn-success btn-sm" href="transaksi_update.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
-                                            <a class="btn btn-danger btn-sm" href="transaksi_delete.php?id=<?= $data['id']; ?>">
+                                            <a class="btn btn-danger btn-sm" href="transaksi_delete.php?id=<?= $data['id']; ?>" onclick="return confirm('Are you sure to delete?')">
                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
-
                                 <?php
                                 }
                                 mysqli_close($conn);
                                 ?>
+                            </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="5" class="table-active">Total Transaksi</th>
+                                    <th colspan="4" class="table-active">Total Transaksi</th>
                                     <th class="table-active"><?php echo "Rp " . number_format($TotalTransaksi, 2, ",", "."); ?></th>
                                 </tr>
                             </tfoot>
-
-                            </tbody>
                         </table>
                     </div>
                 </div>
