@@ -64,8 +64,6 @@ require('config.php');
                                     <th>#</th>
                                     <th>ID Transaksi</th>
                                     <th>Nama Barang</th>
-                                    <th>Qty</th>
-                                    <th>Harga</th>
                                     <th>Nominal</th>
                                     <th>PPN</th>
                                     <th>Total</th>
@@ -91,12 +89,13 @@ require('config.php');
                                         <th><?= $no++; ?></th>
                                         <td><?php echo $data['IdTransaksi']; ?></td>
                                         <td><?php echo $data['NamaBarang']; ?></td>
-                                        <td><?php echo $data['Qty']; ?></td>
-                                        <td><?php echo "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
                                         <td>
+                                            <a class="btn btn-secondary btn-sm" href="transaksi_detail.php?id=<?= $data['id']; ?>">
+                                                <i class="far fa-eye" aria-hidden="true"></i>
+                                            </a> |
                                             <a class="btn btn-success btn-sm" href="transaksi_update.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
@@ -112,7 +111,7 @@ require('config.php');
                                 ?>
                             <tfoot>
                                 <tr>
-                                    <th colspan="7" class="table-active">Total Transaksi</th>
+                                    <th colspan="5" class="table-active">Total Transaksi</th>
                                     <th class="table-active"><?php echo "Rp " . number_format($TotalTransaksi, 2, ",", "."); ?></th>
                                 </tr>
                             </tfoot>

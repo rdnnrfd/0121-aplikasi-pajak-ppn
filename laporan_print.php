@@ -2,7 +2,10 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 require('config.php');
+
+$query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -25,58 +28,72 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/barang.css">
+    <link rel="stylesheet" type="text/css" href="css/cetak.css">
 
-    <title>Daftar Persediaan</title>
+    <title>Print</title>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <?php include("components/navbar.php"); ?>
-    <!-- End of Navbar -->
-
-    <!-- Content -->
-    <div class="container" id="content">
-        <article id="beranda" class="container py-5">
-            <h2>Hallo!</h2>
-            <br>
+    <!-- Main -->
+    <section id="header-kop">
+        <div class="container-fluid">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <th class="text-center">
+                            <h4>Rdnnrfd Shop</h4>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Jl. Pajajaran No. 12a, Kota Bandung, Jawa Barat</td>
+                    </tr>
+                </tbody>
+            </table>
             <hr>
-            <!-- body -->
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="container col-lg-9">
-                        <br>
-                        <?php
-                        $sql = "SELECT * FROM persediaan";
-                        $query = mysqli_query($conn, $sql);
-                        while ($data = mysqli_fetch_array($query)) {
-                        ?>
-                            <div class="card" style="max-width: 15rem;">
-                                <img src="assets/images/<?= $data['Foto'] ?>" width="100" class="card-img-top">
-                                <div class="card-body">
-                                    <h5>
-                                        <?= $data['NamaBarang']; ?>
-                                    </h5>
-                                    <small class="text-muted">Harga</small>
-                                    <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary">Detail</a> |
-                                    <a href="transaksi_create.php?id=<?= $data['id']; ?>" class="btn btn-danger">Checkout</a>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        <?php
-                        }
-                        mysqli_close($conn);
-        ?>
-        <!-- end body -->
-        </article>
-    </div>
-    <!-- End Content -->
+        </div>
+    </section>
 
+    <?php
+    $query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
+    while ($data = mysqli_fetch_array($query)) {
+    ?>
+        <section id="body-of-report">
+            <div class="container">
+                <h4 class="text-center">Detail Laporan</h4>
+                <h6 class="text-center">Id Transaksi: <?php echo $data['IdTransaksi']; ?></h6>
+                <br />
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="border">Nama Barang</th>
+                        <th class="border"><?php echo $data['NamaBarang']; ?></th>
+                    </tr>
+                    <tr>
+                        <th>Total Pembelian</th>
+                        <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                    </tr>
+                    <tr>
+                        <th class="right">Nominal</th>
+                        <td class="right"><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
+                    </tr>
+                    <tr>
+                        <th class="right">PPN</th>
+                        <td class="right"><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
+                    </tr>
+                </table>
+            </div><!-- /.container -->
+        </section>
+
+    <?php
+    }
+    mysqli_close($conn);
+    ?>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.print();
+        });
+    </script>
+    <!-- End Main Body -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 

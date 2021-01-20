@@ -63,7 +63,7 @@ require('config.php');
 
                                 <div class="form-group">
                                     <label for="NamaBarang">Nama Barang</label>
-                                    <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>">
+                                    <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>" readonly>
                                 </div>
 
                                 <div class="form-group">
@@ -73,7 +73,7 @@ require('config.php');
 
                                 <div class="form-group">
                                     <label for="Harga">Harga</label>
-                                    <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>">
+                                    <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
                                 </div>
 
                                 <div class="form-group">

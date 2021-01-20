@@ -5,7 +5,7 @@ require('config.php');
 
 if ($_GET) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM persediaan WHERE id ='$id'";
+    $sql = "SELECT * FROM transaksi WHERE id ='$id'";
     $query = mysqli_query($conn, $sql);
     $result = mysqli_fetch_array($query);
 } else {
@@ -13,6 +13,7 @@ if ($_GET) {
     exit;
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -37,7 +38,7 @@ if ($_GET) {
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/transaksi.css">
 
-    <title>Add Transaction</title>
+    <title>Detail Transaksi</title>
 </head>
 
 <body>
@@ -48,65 +49,60 @@ if ($_GET) {
     <!-- Main -->
     <div class="container-fluid py-3">
         <div class="row">
-            <div class="col-md-2">
-                <!-- SideBar -->
-                <?php include("components/sidebar.php"); ?>
-                <!-- End Sidebar -->
-            </div>
             <!-- Body -->
-            <?php
-            $baru = $conn->query("SELECT transaksi.*, persediaan.* FROM transaksi, persediaan ORDER BY transaksi.IdTransaksi DESC");
-            $IdTransaksi = mysqli_fetch_array($baru);
-            $kt = $IdTransaksi['IdTransaksi'];
-            $urut = substr($kt, 6, 8);
-            $tambah = (int) $urut + 1;
-            $bln = date('m');
-
-            if (strlen($tambah) == 1) {
-                $format = "KT" . $bln . "-00" . $tambah;
-            } elseif (strlen($tambah) == 2) {
-                $format = "KT" . $bln . "-0" . $tambah;
-            } else {
-                $format = "KT" . $bln . "-" . $tambah;
-            }
-            ?>
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">New Transaction</div>
-                    <div class="card-body">
-                        <form action="transaksi_create_aksi.php" method="post" id="transaksi" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="IdTransaksi">ID Transaksi</label>
-                                <input type="text" name="IdTransaksi" value="<?= $format ?>" class="form-control" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="NamaBarang">Nama Barang</label>
-                                <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Qty">Qty</label>
-                                <input type="number" class="form-control" name="Qty">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Harga">Harga</label>
-                                <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="submit" name="Submit" class="btn btn-primary" value="Create">
-                            </div>
-
-                        </form>
-                    </div>
+            <div class="col-md">
+                <div class="container">
+                    <h5 class="d-flex justify-content-between align-items-center">
+                        Detail Transaksi
+                        <a href="transaksi.php" class="btn btn-secondary"> Back</a>
+                    </h5>
+                    <hr />
                 </div>
+                <div class="container col-lg-9">
+                    <br>
+                    <?php
+                    $id = $_GET['id'];
+                    $query = mysqli_query($conn, "SELECT * FROM transaksi WHERE id='$id'");
+                    while ($data = mysqli_fetch_array($query)) {
+                    ?>
+                        <div class="card" style="max-width: 900px;">
+                            <div class="col-md-8">
+                                <div class="card-body">
+
+                                    <small class="text-muted">Id Transaksi</small>
+                                    <h3><?= $data['IdTransaksi']; ?></h3>
+
+                                    <small class="text-muted">Nama Barang</small>
+                                    <h5 class="card-title"><?= $data['NamaBarang']; ?></h5>
+
+                                    <small class="text-muted">Qty</small>
+                                    <h5 class="card-title"><?= $data['Qty']; ?></h5>
+
+                                    <small class="text-muted">Harga</small>
+                                    <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
+
+                                    <small class="text-muted">Nominal</small>
+                                    <h5><?= "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></h5>
+
+                                    <small class="text-muted">PPN</small>
+                                    <h5><?= "Rp " . number_format($data['PPN'], 2, ",", "."); ?></h5>
+
+                                    <small class="text-muted">Total</small>
+                                    <h5><?= "Rp " . number_format($data['Total'], 2, ",", "."); ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            <?php
+                    }
+                    mysqli_close($conn);
+            ?>
             </div>
-            <!-- End Body -->
         </div>
+        <!-- End Body -->
     </div>
     <!-- End Main Body -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 

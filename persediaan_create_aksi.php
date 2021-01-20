@@ -1,11 +1,11 @@
 <?php
-require('config.php');
+include 'config.php';
 
 $KodeBarang = $_POST['KodeBarang'];
 $NamaBarang = $_POST['NamaBarang'];
-$Deskripsi = $_POST['Deskripsi'];
-$Harga = $_POST['Harga'];
-$Foto = $_FILES['Foto']['name'];
+$Deskripsi  = $_POST['Deskripsi'];
+$Harga      = $_POST['Harga'];
+$Foto       = $_FILES['Foto']['name'];
 
 $rand = rand();
 $ekstensi = array('png', 'jpg', 'jpeg', 'gif', 'svg');
@@ -20,7 +20,7 @@ if (!in_array($ext, $ekstensi)) {
         $fx = $rand . '_' . $filename;
         move_uploaded_file($_FILES['Foto']['tmp_name'], 'assets/images/' . $rand . '_' . $filename);
         mysqli_query($conn, "INSERT INTO persediaan (Foto, KodeBarang, NamaBarang, Deskripsi, Harga)
-        VALUES (Null, '$fx', '$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga')");
+        VALUES (Null, '$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga')");
         header("location:persediaan.php?alert=berhasil");
     } else {
         header("location:persediaan.php?alert=gagal_ukuran");

@@ -54,40 +54,40 @@ require('config.php');
                         </h5>
                     </div>
                     <div class="card-body">
-                        <?php
-                        if (isset($_GET['alert'])) {
-                            if ($_GET['alert'] == 'gagal_ekstensi') {
-                        ?>
-                                <div class="alert alert-warning alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-warning"></i> Peringatan!</h4>
-                                    Ekstensi Tidak Diperbolehkan.
-                                </div>
-                            <?php
-                            } elseif ($_GET['alert'] == "gagal_ukuran") {
-                            ?>
-                                <div class="alert alert-warning alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-check"></i> Peringatan!</h4>
-                                    Ukuran File Terlalu Besar.
-                                </div>
-                            <?php
-                            } elseif ($_GET['alert'] == "berhasil") {
-                            ?>
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-check"></i> Success!</h4>
-                                    Berhasil Disimpan.
-                                </div>
-                        <?php
-                            }
-                        }
-                        ?>
-
                         <table class="table table-hover">
+                            <?php
+                            if (isset($_GET['alert'])) {
+                                if ($_GET['alert'] == 'gagal_ekstensi') {
+                            ?>
+                                    <div class="alert alert-warning alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-warning"></i> Peringatan!</h4>
+                                        Ekstensi Tidak Diperbolehkan.
+                                    </div>
+                                <?php
+                                } elseif ($_GET['alert'] == "gagal_ukuran") {
+                                ?>
+                                    <div class="alert alert-warning alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-check"></i> Peringatan!</h4>
+                                        Ukuran File Terlalu Besar.
+                                    </div>
+                                <?php
+                                } elseif ($_GET['alert'] == "berhasil") {
+                                ?>
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-check"></i> Success!</h4>
+                                        Berhasil Disimpan.
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Foto</th>
                                     <th>Kode Barang</th>
                                     <th>Nama Barang</th>
                                     <th>Harga</th>
@@ -98,10 +98,11 @@ require('config.php');
                                 <?php
                                 $query = mysqli_query($conn, "SELECT * FROM persediaan");
                                 $no = 1;
-                                while ($data = mysqli_fetch_array($query)) {
+                                while ($data = mysqli_fetch_assoc($query)) {
                                 ?>
                                     <tr>
                                         <th><?php echo $no++; ?></th>
+                                        <td><img src="assets/images/<?= $data['Foto'] ?>" width="80"></td>
                                         <td><?php echo $data['KodeBarang']; ?></td>
                                         <td><?php echo $data['NamaBarang']; ?></td>
                                         <td><?php echo "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
@@ -117,7 +118,6 @@ require('config.php');
                                             </a>
                                         </td>
                                     </tr>
-
                                 <?php
                                 }
                                 mysqli_close($conn);

@@ -284,6 +284,26 @@ require('config.php');
 
 persediaan details
 
+$rand = rand();
+$ekstensi = array('png', 'jpg', 'jpeg', 'gif', 'svg');
+$filename = $_FILES['Foto']['name'];
+$filesize = $_FILES['Foto']['size'];
+$ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+if (!in_array($ext, $ekstensi)) {
+    header("location:persediaan.php?alert=gagal_ekstensi");
+} else {
+    if ($filesize < 1044070) {
+        $fx = $rand . '_' . $filename;
+        move_uploaded_file($_FILES['Foto']['tmp_name'], 'assets/images/' . $rand . '_' . $filename);
+        mysqli_query($conn, "INSERT INTO persediaan (Foto, KodeBarang, NamaBarang, Deskripsi, Harga)
+        VALUES (Null, '$fx', '$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga')");
+        header("location:persediaan.php?alert=berhasil");
+    } else {
+        header("location:persediaan.php?alert=gagal_ukuran");
+    }
+}
+
 <?php
                         if (isset($_GET['alert'])) {
                             if ($_GET['alert'] == 'gagal_ekstensi') {
@@ -313,6 +333,56 @@ persediaan details
                             }
                         }
                         ?>
+
+
+<?php
+require('config.php');
+$upload_dir = 'assets/images/';
+
+if (isset($_POST['Submit'])) {
+    $KodeBarang = $_POST['KodeBarang'];
+    $NamaBarang = $_POST['NamaBarang'];
+    $Deskripsi = $_POST['Deskripsi'];
+    $Harga = $_POST['Harga'];
+
+    $Foto = $_FILES['Foto']['name'];
+    $imgTmp = $_FILES['Foto']['tmp_name'];
+    $imgSize = $_FILES['Foto']['size'];
+
+    if (empty($NamaBarang)) {
+        $errorMsg = 'Please input nama barang';
+    } elseif (empty($Deskripsi)) {
+        $errorMsg = 'Please input deskripsi';
+    } elseif (empty($Harga)) {
+        $errorMsg = 'Please input harga';
+    } else {
+        $imgExt = strtolower(pathinfo($Foto, PATHINFO_EXTENSION));
+        $allowExt  = array('jpeg', 'jpg', 'png', 'gif');
+        $userPic = time() . '_' . rand(1000, 9999) . '.' . $imgExt;
+
+        if (in_array($imgExt, $allowExt)) {
+            if ($imgSize < 5000000) {
+                move_uploaded_file($imgTmp, $upload_dir . $userPic);
+            } else {
+                $errorMsg = 'Image too large';
+            }
+        } else {
+            $errorMsg = 'Please select a valid image';
+        }
+    }
+    if (!isset($errorMsg)) {
+        $sql = "INSERT INTO persediaan (Foto, KodeBarang, NamaBarang, Deskripsi, Harga)
+        VALUES ('" . $Foto . "', '" . $KodeBarang . "', '" . $NamaBarang . "', '" . $Deskripsi . "', '" . $Harga . "')";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            $successMsg = 'New record added successfully';
+            header('Location: persediaan.php');
+        } else {
+            $errorMsg = 'Error ' . mysqli_error($conn);
+        }
+    }
+}
+
 
 
 <?php
@@ -422,3 +492,35 @@ require('config.php');
 </body>
 
 </html>
+
+if ($Foto != "") {
+    $ekstensi_diperbolehkan = array('png', 'jpg', 'jpeg');
+    $x = explode('.', $Foto);
+    $ekstensi = strtolower(end($x));
+    $file_tmp = $_FILES['Foto']['tmp_name'];
+    $rand     = rand(1, 999);
+    $foto_baru = $rand . '-' . $Foto;
+    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+        move_uploaded_file($file_tmp, 'assets/images/' . $foto_baru);
+
+        $query = "INSERT INTO persediaan (KodeBarang, NamaBarang, Deskripsi, Harga, Foto) VALUES ('$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga',  '$foto_baru')";
+        $result = mysqli_query($conn, $query);
+
+        if (!$result) {
+            die("Query gagal dijalankan: " . mysqli_errno($conn) . " - " . mysqli_error($conn));
+        } else {
+            echo "<script>alert('Data berhasil ditambah.');window.location='persediaan.php';</script>";
+        }
+    } else {
+        echo "<script>alert('Ekstensi gambar yang boleh hanya png, jpg atau jpeg.');window.location='persediaan_create.php';</script>";
+    }
+} else {
+    $query = "INSERT INTO persediaan (KodeBarang, NamaBarang, Deskripsi, Harga, Foto) VALUES ('$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga', null)";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query gagal dijalankan: " . mysqli_errno($conn) . " - " . mysqli_error($conn));
+    } else {
+        echo "<script>alert('Data berhasil ditambah.');window.location='persediaan.php';</script>";
+    }
+}

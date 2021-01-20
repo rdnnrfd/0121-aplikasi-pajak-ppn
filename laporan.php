@@ -28,9 +28,6 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/laporan.css">
 
-    <!-- JS -->
-    <script src="js/main.js"></script>
-
     <title>Laporan</title>
 </head>
 
@@ -53,7 +50,6 @@ require('config.php');
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Laporan
-                            <a href="print.php" class="btn btn-secondary"><i class="fas fa-print"></i></a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -63,13 +59,15 @@ require('config.php');
                                     <th>#</th>
                                     <th>ID Transaksi</th>
                                     <th>Nama Barang</th>
+                                    <th>Nominal</th>
                                     <th>PPN</th>
                                     <th>Total Pembelian</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, PPN, Total FROM transaksi");
+                                $query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
                                 $no = 1;
 
                                 while ($data = mysqli_fetch_array($query)) {
@@ -78,8 +76,10 @@ require('config.php');
                                         <th><?php echo $no++; ?></th>
                                         <td><?php echo $data['IdTransaksi']; ?></td>
                                         <td><?php echo $data['NamaBarang']; ?></td>
+                                        <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                                        <td><a href="laporan_print.php" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i></a></td>
                                     </tr>
 
                                 <?php

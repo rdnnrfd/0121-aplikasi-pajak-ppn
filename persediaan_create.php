@@ -50,7 +50,6 @@ require('config.php');
                 <div class="card">
                     <div class="card-header">New Item</div>
                     <div class="card-body">
-
                         <?php
                         $baru = $conn->query("SELECT KodeBarang FROM persediaan ORDER BY KodeBarang DESC");
                         $KodeBarang = mysqli_fetch_array($baru);
@@ -67,13 +66,12 @@ require('config.php');
                             $format = "KB" . $bln . "-" . $tambah;
                         }
                         ?>
-
-                        <form action="persediaan_create_aksi.php" method="post" id="persediaan" enctype="multipart/form-data">
+                        <form action="persediaan_create_aksi.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="KodeBarang">KodeBarang</label>
                                 <input type="text" name="KodeBarang" id="KodeBarang" value="<?= $format ?>" class="form-control" required="required" readonly>
                             </div>
-
+                            
                             <div class="form-group">
                                 <label for="Foto">Foto</label>
                                 <div class="form-group">
@@ -97,7 +95,7 @@ require('config.php');
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" name="" class="btn btn-primary" value="Create">
+                                <input type="submit" name="Submit" class="btn btn-primary" value="Create">
                             </div>
 
                         </form>
