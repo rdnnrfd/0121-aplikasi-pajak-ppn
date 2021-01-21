@@ -58,7 +58,7 @@ require('config.php');
                                 <tr>
                                     <th>#</th>
                                     <th>ID Transaksi</th>
-                                    <th>Nama Barang</th>
+                                    <th>Tanggal Transaksi</th>
                                     <th>Nominal</th>
                                     <th>PPN</th>
                                     <th>Total Pembelian</th>
@@ -67,7 +67,7 @@ require('config.php');
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
+                                $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, Nominal, PPN, Total FROM transaksi");
                                 $no = 1;
 
                                 while ($data = mysqli_fetch_array($query)) {
@@ -75,7 +75,7 @@ require('config.php');
                                     <tr>
                                         <th><?php echo $no++; ?></th>
                                         <td><?php echo $data['IdTransaksi']; ?></td>
-                                        <td><?php echo $data['NamaBarang']; ?></td>
+                                        <td><?php echo $data['TglTransaksi']; ?></td>
                                         <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>

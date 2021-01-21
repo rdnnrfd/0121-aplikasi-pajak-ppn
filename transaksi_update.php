@@ -62,6 +62,11 @@ require('config.php');
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="TglTransaksi">Tanggal Transaksi</label>
+                                    <input type="text" name="TglTransaksi" value="<?php echo $data['TglTransaksi']; ?>" class="form-control" readonly>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="NamaBarang">Nama Barang</label>
                                     <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>" readonly>
                                 </div>

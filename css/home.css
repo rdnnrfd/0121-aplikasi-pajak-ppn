@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand&display=swap');
 
+* {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    box-sizing: border-box;
+}
+
 /* Navbar */
 .navbar-brand {
     font-family: 'Courgette', cursive;
@@ -14,14 +21,18 @@
     text-transform: uppercase;
 }
 
-/* content home */
-* {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bolder;
-    text-align: center;
-    box-sizing: border-box;
+.bar {
+    margin-right: 16px;
+    transition-duration: .4s;
+    background: rgb(18, 31, 33);
+    padding-left: 30px;
+    color: white;
+    cursor: pointer;
 }
 
-.col {
-    cursor: pointer;
+.active,
+.bar:hover {
+    background: rgb(255, 255, 255);
+    padding-left: 25px;
+    color: rgb(4, 3, 3);
 }

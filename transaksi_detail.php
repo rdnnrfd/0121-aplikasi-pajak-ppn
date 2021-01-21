@@ -72,6 +72,9 @@ if ($_GET) {
                                     <small class="text-muted">Id Transaksi</small>
                                     <h3><?= $data['IdTransaksi']; ?></h3>
 
+                                    <small class="text-muted">Tanggal Transaksi</small>
+                                    <h5 class="card-title"><?= $data['TglTransaksi']; ?></h5>
+
                                     <small class="text-muted">Nama Barang</small>
                                     <h5 class="card-title"><?= $data['NamaBarang']; ?></h5>
 

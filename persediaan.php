@@ -2,6 +2,8 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 require('config.php');
+
+$result = mysqli_query($conn, "SELECT * FROM persediaan ORDER BY KodeBarang DESC");
 ?>
 
 <!doctype html>
@@ -39,95 +41,67 @@ require('config.php');
     <!-- Main -->
     <div class="container-fluid py-3">
         <div class="row">
+
             <div class="col-md-2">
                 <!-- SideBar -->
                 <?php include("components/sidebar.php"); ?>
                 <!-- End Sidebar -->
             </div>
-            <!-- Body -->
+
             <div class="col-md-10">
                 <div class="card">
+
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Data Persediaan
-                            <a href="persediaan_create.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Tambah Persediaan</a>
+                            <a href="persediaan_create.php" class="href btn btn-primary"><i class="fas fa-plus-circle"></i> Tambah Persediaan</a>
                         </h5>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
-                            <?php
-                            if (isset($_GET['alert'])) {
-                                if ($_GET['alert'] == 'gagal_ekstensi') {
-                            ?>
-                                    <div class="alert alert-warning alert-dismissible">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        <h4><i class="icon fa fa-warning"></i> Peringatan!</h4>
-                                        Ekstensi Tidak Diperbolehkan.
-                                    </div>
-                                <?php
-                                } elseif ($_GET['alert'] == "gagal_ukuran") {
-                                ?>
-                                    <div class="alert alert-warning alert-dismissible">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        <h4><i class="icon fa fa-check"></i> Peringatan!</h4>
-                                        Ukuran File Terlalu Besar.
-                                    </div>
-                                <?php
-                                } elseif ($_GET['alert'] == "berhasil") {
-                                ?>
-                                    <div class="alert alert-success alert-dismissible">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        <h4><i class="icon fa fa-check"></i> Success!</h4>
-                                        Berhasil Disimpan.
-                                    </div>
-                            <?php
-                                }
-                            }
-                            ?>
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Foto</th>
                                     <th>Kode Barang</th>
                                     <th>Nama Barang</th>
                                     <th>Harga</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
-                                $query = mysqli_query($conn, "SELECT * FROM persediaan");
-                                $no = 1;
-                                while ($data = mysqli_fetch_assoc($query)) {
-                                ?>
+
+                            <?php
+                            $result = mysqli_query($conn, "SELECT * FROM persediaan");
+                            $no = 1;
+                            while ($data =  mysqli_fetch_array($result)) {
+                            ?>
+                                <tbody>
                                     <tr>
                                         <th><?php echo $no++; ?></th>
-                                        <td><img src="assets/images/<?= $data['Foto'] ?>" width="80"></td>
                                         <td><?php echo $data['KodeBarang']; ?></td>
                                         <td><?php echo $data['NamaBarang']; ?></td>
                                         <td><?php echo "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
                                         <td>
-                                            <a class="btn btn-secondary btn-sm" href="persediaan_detail.php?id=<?= $data['id']; ?>">
+                                            <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary btn-sm">
                                                 <i class="far fa-eye" aria-hidden="true"></i>
                                             </a> |
-                                            <a class="btn btn-success btn-sm" href="persediaan_update.php?id=<?= $data['id']; ?>">
+                                            <a href="persediaan_update.php?id=<?= $data['id']; ?>" class="btn btn-success btn-sm">
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
-                                            <a class="btn btn-danger btn-sm" href="persediaan_delete.php?id=<?= $data['id']; ?>" onclick="return confirm('Are you sure to delete?')">
+                                            <a href="persediaan_delete.php?id=<?= $data['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to Delete?')">
                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                <?php
-                                }
-                                mysqli_close($conn);
-                                ?>
-                            </tbody>
+                                </tbody>
+
+                            <?php
+                            }
+                            mysqli_close($conn);
+                            ?>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- End Body -->
         </div>
     </div>
     <!-- End Main Body -->

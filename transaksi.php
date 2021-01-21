@@ -60,6 +60,7 @@ require('config.php');
                                 <tr>
                                     <th>#</th>
                                     <th>ID Transaksi</th>
+                                    <th>Tanggal Transaksi</th>
                                     <th>Nominal</th>
                                     <th>PPN</th>
                                     <th>Total</th>
@@ -68,7 +69,7 @@ require('config.php');
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($conn, "SELECT * FROM transaksi ");
+                                $query = mysqli_query($conn, "SELECT * FROM transaksi");
                                 $no = 1;
                                 $PPN = 0;
                                 $Nominal = 0;
@@ -84,6 +85,7 @@ require('config.php');
                                     <tr>
                                         <th><?= $no++; ?></th>
                                         <td><?php echo $data['IdTransaksi']; ?></td>
+                                        <td><?php echo $data['TglTransaksi']; ?></td>
                                         <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
@@ -106,7 +108,7 @@ require('config.php');
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="4" class="table-active">Total Transaksi</th>
+                                    <th colspan="5" class="table-active">Total Transaksi</th>
                                     <th class="table-active"><?php echo "Rp " . number_format($TotalTransaksi, 2, ",", "."); ?></th>
                                 </tr>
                             </tfoot>

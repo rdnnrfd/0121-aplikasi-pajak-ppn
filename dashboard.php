@@ -25,7 +25,7 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
 
     <title>Dashboard</title>
 </head>
@@ -40,6 +40,14 @@ require('config.php');
         <article id="beranda" class="container py-5">
             <h2>Halo <i><?php echo $_SESSION['username']; ?></i> !</h2>
             <br>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Home.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.php">Dashboard</a>
+                </li>
+            </ul>
             <hr>
             <div class="container py-4">
                 <section>

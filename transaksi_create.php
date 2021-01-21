@@ -54,61 +54,67 @@ if ($_GET) {
                 <!-- End Sidebar -->
             </div>
             <!-- Body -->
-            <?php
-            $baru = $conn->query("SELECT transaksi.*, persediaan.* FROM transaksi, persediaan ORDER BY transaksi.IdTransaksi DESC");
-            $IdTransaksi = mysqli_fetch_array($baru);
-            $kt = $IdTransaksi['IdTransaksi'];
-            $urut = substr($kt, 6, 8);
-            $tambah = (int) $urut + 1;
-            $bln = date('m');
-
-            if (strlen($tambah) == 1) {
-                $format = "KT" . $bln . "-00" . $tambah;
-            } elseif (strlen($tambah) == 2) {
-                $format = "KT" . $bln . "-0" . $tambah;
-            } else {
-                $format = "KT" . $bln . "-" . $tambah;
-            }
-            ?>
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">New Transaction</div>
                     <div class="card-body">
-                        <form action="transaksi_create_aksi.php" method="post" id="transaksi" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="IdTransaksi">ID Transaksi</label>
-                                <input type="text" name="IdTransaksi" value="<?= $format ?>" class="form-control" readonly>
-                            </div>
+                        <?php
+                        $baru = $conn->query("SELECT transaksi.*, persediaan.* FROM transaksi, persediaan ORDER BY transaksi.IdTransaksi DESC");
+                        $IdTransaksi = mysqli_fetch_array($baru);
+                        $kt = $IdTransaksi['IdTransaksi'];
+                        $urut = substr($kt, 6, 8);
+                        $tambah = (int) $urut + 1;
+                        $bln = date('m');
 
-                            <?php
-                            $result = mysqli_query($conn, "SELECT NamaBarang, Harga FROM persediaan");
-                            while ($data = mysqli_fetch_array($result)) {
-                            ?>
+                        if (strlen($tambah) == 1) {
+                            $format = "KT" . $bln . "-00" . $tambah;
+                        } elseif (strlen($tambah) == 2) {
+                            $format = "KT" . $bln . "-0" . $tambah;
+                        } else {
+                            $format = "KT" . $bln . "-" . $tambah;
+                        }
+                        ?>
+                        <?php
+                        $id = $_GET['id'];
+                        $result = mysqli_query($conn, "SELECT NamaBarang, Harga FROM persediaan WHERE id='$id'");
 
-                                <div class="form-group">
-                                    <label for="NamaBarang">Nama Barang</label>
-                                    <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>">
+                        while ($data = mysqli_fetch_array($result)) {
+                        ?>
+                            <form action="transaksi_create_aksi.php" method="post" id="transaksi" enctype="multipart/form-data">
+                                <div class="row g-2">
+                                    <div class="col-md-6 form-group">
+                                        <label for="IdTransaksi">ID Transaksi</label>
+                                        <input type="text" name="IdTransaksi" value="<?= $format ?>" class="form-control" readonly>
+                                    </div>
+
+                                    <div class="col-md-6 form-group">
+                                        <label for="TglTransaksi">Tanggal Transaksi</label>
+                                        <input type="text" name="TglTransaksi" value="<?= date('d-m-Y'); ?>" class="form-control" readonly>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label for="NamaBarang">Nama Barang</label>
+                                        <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>" readonly>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label for="Qty">Qty</label>
+                                        <input type="number" class="form-control" name="Qty">
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label for="Harga">Harga</label>
+                                        <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <button type="submit" name="Submit" class="btn btn-primary">Create</button>
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="Qty">Qty</label>
-                                    <input type="number" class="form-control" name="Qty">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Harga">Harga</label>
-                                    <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
-                                </div>
-
-                            <?php
-                            }
-                            ?>
-
-                            <div class="form-group">
-                                <input type="submit" name="Submit" class="btn btn-primary" value="Create">
-                            </div>
-
-                        </form>
+                            </form>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

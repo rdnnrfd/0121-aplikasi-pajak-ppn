@@ -10,7 +10,6 @@
                 <?php echo $_SESSION['username']; ?>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="dashboard.php">Dashboard</a>
                 <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
         </div>

@@ -26,7 +26,7 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/transaksi.css">
+    <link rel="stylesheet" type="text/css" href="css/barang.css">
 
     <title>Add Item</title>
 </head>
@@ -45,60 +45,63 @@ require('config.php');
                 <!-- End Sidebar -->
             </div>
             <!-- Body -->
+            <?php
+            $baru = $conn->query("SELECT KodeBarang FROM persediaan ORDER BY KodeBarang DESC");
+            $KodeBarang = mysqli_fetch_array($baru);
+            $kb = $KodeBarang['KodeBarang'];
+            $urut = substr($kb, 6, 8);
+            $tambah = (int) $urut + 1;
+            $bln = date('m');
 
+            if (strlen($tambah) == 1) {
+                $format = "KB" . $bln . "-00" . $tambah;
+            } elseif (strlen($tambah) == 2) {
+                $format = "KB" . $bln . "-0" . $tambah;
+            } else {
+                $format = "KB" . $bln . "-" . $tambah;
+            }
+            ?>
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">New Item</div>
                     <div class="card-body">
-                        <?php
-                        $baru = $conn->query("SELECT KodeBarang FROM persediaan ORDER BY KodeBarang DESC");
-                        $KodeBarang = mysqli_fetch_array($baru);
-                        $kb = $KodeBarang['KodeBarang'];
-                        $urut = substr($kb, 6, 8);
-                        $tambah = (int) $urut + 1;
-                        $bln = date('m');
+                        <form action="persediaan_create.php" method="POST" enctype="multipart/form-data">
 
-                        if (strlen($tambah) == 1) {
-                            $format = "KB" . $bln . "-00" . $tambah;
-                        } elseif (strlen($tambah) == 2) {
-                            $format = "KB" . $bln . "-0" . $tambah;
-                        } else {
-                            $format = "KB" . $bln . "-" . $tambah;
-                        }
-                        ?>
-                        <form action="persediaan_create_aksi.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="KodeBarang">KodeBarang</label>
-                                <input type="text" name="KodeBarang" id="KodeBarang" value="<?= $format ?>" class="form-control" required="required" readonly>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="Foto">Foto</label>
-                                <div class="form-group">
-                                    <input type="file" name="Foto" id="Foto" required="required">
-                                </div>
+                                <input type="text" name="KodeBarang" id="KodeBarang" value="<?= $format ?>" class="form-control" required="" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label for="NamaBarang">Nama Barang</label>
-                                <input type="text" class="form-control" id="NamaBarang" name="NamaBarang" required="required">
+                                <input type="text" class="form-control" id="NamaBarang" name="NamaBarang" required="">
                             </div>
 
                             <div class="form-group">
                                 <label for="Deskripsi">Deskripsi</label>
-                                <textarea class="form-control" name="Deskripsi" id="Deskripsi" style="height: 100px"></textarea>
+                                <input type="text" class="form-control" id="Deskripsi" name="Deskripsi" required="">
                             </div>
 
                             <div class="form-group">
                                 <label for="Harga">Harga</label>
-                                <input type="number" class="form-control" id="Harga" name="Harga" required="required">
+                                <input type="number" class="form-control" id="Harga" name="Harga" required="">
                             </div>
 
                             <div class="form-group">
                                 <input type="submit" name="Submit" class="btn btn-primary" value="Create">
                             </div>
-
                         </form>
+                        <?php
+                        if (isset($_POST['Submit'])) {
+                            $KodeBarang = $_POST['KodeBarang'];
+                            $NamaBarang = $_POST['NamaBarang'];
+                            $Deskripsi  = $_POST['Deskripsi'];
+                            $Harga      = $_POST['Harga'];
+
+                            $result = mysqli_query($conn, "INSERT INTO persediaan (KodeBarang, NamaBarang, Deskripsi, Harga) VALUES ('$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga')");
+                            echo "<br/>User added successfully. <a href='persediaan.php' class='btn btn-success' role='button'> View Data </a>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

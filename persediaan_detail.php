@@ -53,9 +53,16 @@ if ($_GET) {
             <div class="col-md">
                 <div class="container">
                     <h5 class="d-flex justify-content-between align-items-center">
-                        Detail Item
-                        <a href="home.php" class="btn btn-secondary"> Back</a>
+                        DETAIL ITEM
                     </h5>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="persediaan.php">Daftar Persediaan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Home.php">Home</a>
+                        </li>
+                    </ul>
                     <hr />
                 </div>
                 <div class="container col-lg-9">
@@ -87,7 +94,7 @@ if ($_GET) {
                                             <p class="card-text"><?= $data['Deskripsi']; ?></p>
 
                                             <small class="text-muted">Harga</small>
-                                            <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
+                                            <h5 class="price"><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
                                         </div>
                                     </div>
                                 </div>

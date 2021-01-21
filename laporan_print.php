@@ -3,7 +3,7 @@
 include("auth_session.php");
 require('config.php');
 
-$query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
+$query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
 ?>
 
 <!doctype html>
@@ -54,12 +54,13 @@ $query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, Nominal, PPN, Tota
     </section>
 
     <?php
-    $query = mysqli_query($conn, "SELECT IdTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
+    $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
     while ($data = mysqli_fetch_array($query)) {
     ?>
         <section id="body-of-report">
             <div class="container">
                 <h4 class="text-center">Detail Laporan</h4>
+                <h5 class="text-center">Tanggal Transaksi: <?php echo $data['TglTransaksi']; ?></h5>
                 <h6 class="text-center">Id Transaksi: <?php echo $data['IdTransaksi']; ?></h6>
                 <br />
                 <table class="table table-bordered">

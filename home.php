@@ -25,9 +25,9 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/barang.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
 
-    <title>Daftar Persediaan</title>
+    <title>Katalog</title>
 </head>
 
 <body>
@@ -40,39 +40,52 @@ require('config.php');
         <article id="beranda" class="container py-5">
             <h2>Hallo!</h2>
             <br>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Home.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.php">Dashboard</a>
+                </li>
+            </ul>
             <hr>
             <!-- body -->
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="container col-lg-9">
-                        <br>
+
+            <section class="konten">
+                <div class="container">
+
+                    <div class="row">
+
                         <?php
                         $sql = "SELECT * FROM persediaan";
                         $query = mysqli_query($conn, $sql);
-                        while ($data = mysqli_fetch_array($query)) {
+                        while ($data = $query->fetch_assoc()) {
                         ?>
-                            <div class="card" style="max-width: 15rem;">
-                                <img src="assets/images/<?= $data['Foto'] ?>" width="100" class="card-img-top">
-                                <div class="card-body">
-                                    <h5>
-                                        <?= $data['NamaBarang']; ?>
-                                    </h5>
-                                    <small class="text-muted">Harga</small>
-                                    <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary">Detail</a> |
-                                    <a href="transaksi_create.php?id=<?= $data['id']; ?>" class="btn btn-danger">Checkout</a>
+                            <div class="col-md-3"><br>
+                                <div class="card" style="max-width: 15rem;">
+                                    <img src="images/<?= $data['Foto'] ?>" width="100" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5>
+                                            <?= $data['NamaBarang']; ?>
+                                        </h5>
+
+                                        <small class="text-muted">Harga</small>
+                                        <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
+                                        <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary">Detail</a> |
+                                        <a href="transaksi_create.php?id=<?= $data['id']; ?>" class="btn btn-danger">Checkout</a>
+                                    </div>
                                 </div>
                             </div>
-                    </div>
-                </div>
-            </div>
-        <?php
+                        <?php
                         }
                         mysqli_close($conn);
-        ?>
-        <!-- end body -->
+                        ?>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- end body -->
         </article>
     </div>
     <!-- End Content -->

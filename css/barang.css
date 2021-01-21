@@ -46,3 +46,7 @@ h5 {
     text-align: center;
     align-items: center;
 }
+
+h5.price {
+    color: red;
+}
