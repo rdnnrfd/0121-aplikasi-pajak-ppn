@@ -54,7 +54,8 @@ $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nomi
     </section>
 
     <?php
-    $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
+    $id = $_GET['id'];
+    $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi WHERE id='$id'");
     while ($data = mysqli_fetch_array($query)) {
     ?>
         <section id="body-of-report">
@@ -69,17 +70,18 @@ $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nomi
                         <th class="border"><?php echo $data['NamaBarang']; ?></th>
                     </tr>
                     <tr>
-                        <th>Total Pembelian</th>
-                        <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                    <tr>
+                        <th>Pembelian</th>
+                        <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
                     </tr>
                     <tr>
-                        <th class="right">Nominal</th>
-                        <td class="right"><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
+                        <th>PPN Masukan</th>
+                        <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
                     </tr>
-                    <tr>
-                        <th class="right">PPN</th>
-                        <td class="right"><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
+                    <th class="right">Kas</th>
+                    <td class="right"><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
                     </tr>
+
                 </table>
             </div><!-- /.container -->
         </section>

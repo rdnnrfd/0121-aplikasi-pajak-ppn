@@ -1,6 +1,7 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "pajak");
-// Cek koneksi
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$nama_db = "pajak";
+$conn = mysqli_connect($host, $user, $pass, $nama_db);

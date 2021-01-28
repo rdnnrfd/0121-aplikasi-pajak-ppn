@@ -26,9 +26,9 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/transaksi.css">
+    <link rel="stylesheet" type="text/css" href="css/barang.css">
 
-    <title>Add Item</title>
+    <title>Update Item</title>
 </head>
 
 <body>
@@ -48,27 +48,20 @@ require('config.php');
 
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">New Item</div>
+                    <div class="card-header">Update Item</div>
                     <div class="card-body">
 
                         <?php
-                        $id = $_GET['id'];
+                        $KodeBarang = $_GET['KodeBarang'];
 
-                        $result = mysqli_query($conn, "SELECT * FROM persediaan WHERE id='$id'");
-                        while ($data = mysqli_fetch_array($result)) {
+                        $result = mysqli_query($conn, "SELECT * FROM persediaan WHERE KodeBarang='$KodeBarang'");
+                        while ($data = mysqli_fetch_assoc($result)) {
                         ?>
 
-                            <form action="persediaan_create_aksi.php" method="post" id="persediaan" enctype="multipart/form-data">
+                            <form action="persediaan_update_aksi.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="KodeBarang">KodeBarang</label>
                                     <input type="text" name="KodeBarang" id="KodeBarang" value="<?php echo $data['KodeBarang']; ?>" class="form-control" required="required" readonly>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Foto">Foto</label>
-                                    <div class="form-group">
-                                        <input type="file" name="Foto" id="Foto" value="<?php echo $data['Foto']; ?>" required="required">
-                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -78,7 +71,7 @@ require('config.php');
 
                                 <div class="form-group">
                                     <label for="Deskripsi">Deskripsi</label>
-                                    <textarea class="form-control" name="Deskripsi" id="Deskripsi" value="<?php echo $data['Deskripsi']; ?>" style="height: 100px" required="required"></textarea>
+                                    <input type="text" class="form-control" id="Deskripsi" name="Deskripsi" value="<?php echo $data['Deskripsi']; ?>" required="required">
                                 </div>
 
                                 <div class="form-group">
@@ -86,8 +79,9 @@ require('config.php');
                                     <input type="number" class="form-control" id="Harga" value="<?php echo $data['Harga']; ?>" name="Harga" required="required">
                                 </div>
 
+
                                 <div class="form-group">
-                                    <input type="submit" name="" class="btn btn-primary" value="Create">
+                                    <input type="submit" name="" class="btn btn-primary" value="Update">
                                 </div>
 
                             </form>

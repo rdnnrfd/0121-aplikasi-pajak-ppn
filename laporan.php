@@ -53,46 +53,52 @@ require('config.php');
                         </h5>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>ID Transaksi</th>
-                                    <th>Tanggal Transaksi</th>
-                                    <th>Nominal</th>
-                                    <th>PPN</th>
-                                    <th>Total Pembelian</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, Nominal, PPN, Total FROM transaksi");
-                                $no = 1;
-
-                                while ($data = mysqli_fetch_array($query)) {
-                                ?>
+                        <div class="container-fluid">
+                            <table class="table table-hover">
+                                <thead>
                                     <tr>
-                                        <th><?php echo $no++; ?></th>
-                                        <td><?php echo $data['IdTransaksi']; ?></td>
-                                        <td><?php echo $data['TglTransaksi']; ?></td>
-                                        <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
-                                        <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
-                                        <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
-                                        <td><a href="laporan_print.php" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i></a></td>
+                                        <th>#</th>
+                                        <th>ID Transaksi</th>
+                                        <th>Tanggal Transaksi</th>
+                                        <th>Pembelian</th>
+                                        <th>PPN Masukan</th>
+                                        <th>Kas</th>
+                                        <th>Action</th>
                                     </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    $query = mysqli_query($conn, "SELECT * FROM transaksi");
 
-                                <?php
-                                }
-                                mysqli_close($conn);
-                                ?>
-                            <tfoot>
-                        </table>
+
+                                    while ($data = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <tr>
+                                            <th><?php echo $no++; ?></th>
+                                            <td><?php echo $data['IdTransaksi']; ?></td>
+                                            <td><?php echo $data['TglTransaksi']; ?></td>
+                                            <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
+                                            <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
+                                            <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                                            <td>
+                                                <a class="btn btn-success btn-sm" href="laporan_print.php?id=<?= $data['id']; ?>">
+                                                    <i class="fas fa-print" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                <tfoot>
+                            </table>
+                        </div>
                     </div>
+
                 </div>
             </div>
-            <!-- End Body -->
         </div>
+        <!-- End Body -->
+    </div>
     </div>
     <!-- End Main Body -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

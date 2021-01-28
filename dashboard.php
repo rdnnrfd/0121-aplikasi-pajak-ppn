@@ -64,9 +64,9 @@ require('config.php');
                             <div class="col">
                                 <div class="card h-100 shadow p-2 bg-white rounded">
                                     <div class="card-body">
-                                        <h5 class="card-title"><i class="fas fa-clipboard-list"></i> Daftar Persediaan</h5>
+                                        <h5 class="card-title"><i class="fas fa-clipboard-list"></i> Daftar Produk</h5>
                                     </div>
-                                    <a href="persediaan.php" class="btn btn-info bg-info">Daftar Persediaan <i class="fas fa-angle-right"></i></a>
+                                    <a href="persediaan.php" class="btn btn-info bg-info">Daftar Produk <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
                             <div class="col">

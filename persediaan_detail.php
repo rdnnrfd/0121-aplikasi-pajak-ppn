@@ -57,7 +57,7 @@ if ($_GET) {
                     </h5>
                     <ul class="nav justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link" href="persediaan.php">Daftar Persediaan</a>
+                            <a class="nav-link" href="persediaan.php">Daftar Produk</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Home.php">Home</a>
@@ -82,7 +82,7 @@ if ($_GET) {
                             <div class="card-body">
                                 <div class="row md-1">
                                     <div class="col-md-4">
-                                        <td><img src="assets/images/<?= $data['Foto'] ?>" width="300"></td>
+                                        <td><img src="images/<?= $data['Foto'] ?>" width="300"></td>
                                     </div>
 
                                     <div class="col-md-8">

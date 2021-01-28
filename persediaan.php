@@ -1,11 +1,6 @@
 <?php
-//include auth_session.php file on all user panel pages
 include("auth_session.php");
-require('config.php');
-
-$result = mysqli_query($conn, "SELECT * FROM persediaan ORDER BY KodeBarang DESC");
-?>
-
+require('config.php'); ?>
 <!doctype html>
 <html lang="en">
 
@@ -30,7 +25,7 @@ $result = mysqli_query($conn, "SELECT * FROM persediaan ORDER BY KodeBarang DESC
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/barang.css">
 
-    <title>Data Persediaan</title>
+    <title>Data Produk</title>
 </head>
 
 <body>
@@ -53,8 +48,8 @@ $result = mysqli_query($conn, "SELECT * FROM persediaan ORDER BY KodeBarang DESC
 
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
-                            Data Persediaan
-                            <a href="persediaan_create.php" class="href btn btn-primary"><i class="fas fa-plus-circle"></i> Tambah Persediaan</a>
+                            Data Produk
+                            <a href="persediaan_create.php" class="href btn btn-primary"><i class="fas fa-plus-circle"></i> Tambah Produk</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -64,6 +59,7 @@ $result = mysqli_query($conn, "SELECT * FROM persediaan ORDER BY KodeBarang DESC
                                     <th>#</th>
                                     <th>Kode Barang</th>
                                     <th>Nama Barang</th>
+                                    <th>Foto</th>
                                     <th>Harga</th>
                                     <th>Action</th>
                                 </tr>
@@ -72,19 +68,20 @@ $result = mysqli_query($conn, "SELECT * FROM persediaan ORDER BY KodeBarang DESC
                             <?php
                             $result = mysqli_query($conn, "SELECT * FROM persediaan");
                             $no = 1;
-                            while ($data =  mysqli_fetch_array($result)) {
+                            while ($data = mysqli_fetch_assoc($result)) {
                             ?>
                                 <tbody>
                                     <tr>
                                         <th><?php echo $no++; ?></th>
-                                        <td><?php echo $data['KodeBarang']; ?></td>
-                                        <td><?php echo $data['NamaBarang']; ?></td>
-                                        <td><?php echo "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
+                                        <td><?php echo $data["KodeBarang"]; ?></td>
+                                        <td><?php echo $data["NamaBarang"]; ?></td>
+                                        <td><img src="images/<?php echo $data['Foto'] ?>" width="35" height="40"></td>
+                                        <td><?php echo "Rp " . number_format($data["Harga"], 2, ",", "."); ?></td>
                                         <td>
                                             <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary btn-sm">
                                                 <i class="far fa-eye" aria-hidden="true"></i>
                                             </a> |
-                                            <a href="persediaan_update.php?id=<?= $data['id']; ?>" class="btn btn-success btn-sm">
+                                            <a href="persediaan_update.php?KodeBarang=<?= $data['KodeBarang']; ?>" class="btn btn-success btn-sm">
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
                                             <a href="persediaan_delete.php?id=<?= $data['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to Delete?')">
@@ -95,8 +92,10 @@ $result = mysqli_query($conn, "SELECT * FROM persediaan ORDER BY KodeBarang DESC
                                 </tbody>
 
                             <?php
+
                             }
                             mysqli_close($conn);
+
                             ?>
                         </table>
                     </div>

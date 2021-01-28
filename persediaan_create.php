@@ -65,43 +65,37 @@ require('config.php');
                 <div class="card">
                     <div class="card-header">New Item</div>
                     <div class="card-body">
-                        <form action="persediaan_create.php" method="POST" enctype="multipart/form-data">
+                        <form role="form" action="persediaan_create_aksi.php" method="POST" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label for="KodeBarang">KodeBarang</label>
-                                <input type="text" name="KodeBarang" id="KodeBarang" value="<?= $format ?>" class="form-control" required="" readonly>
+                                <input type="text" name="KodeBarang" id="KodeBarang" value="<?= $format ?>" class="form-control" readonly />
                             </div>
 
                             <div class="form-group">
                                 <label for="NamaBarang">Nama Barang</label>
-                                <input type="text" class="form-control" id="NamaBarang" name="NamaBarang" required="">
+                                <input type="text" name="NamaBarang" class="form-control" id="NamaBarang" />
                             </div>
 
                             <div class="form-group">
                                 <label for="Deskripsi">Deskripsi</label>
-                                <input type="text" class="form-control" id="Deskripsi" name="Deskripsi" required="">
+                                <input type="text" name="Deskripsi" class="form-control" id="Deskripsi" />
                             </div>
 
                             <div class="form-group">
                                 <label for="Harga">Harga</label>
-                                <input type="number" class="form-control" id="Harga" name="Harga" required="">
+                                <input type="number" name="Harga" class="form-control" id="Harga" />
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" name="Submit" class="btn btn-primary" value="Create">
+                                <label for="Foto">Foto</label>
+                                <div class="form-group">
+                                    <input type="file" name="Foto" id="Foto" required="" />
+                                </div>
                             </div>
-                        </form>
-                        <?php
-                        if (isset($_POST['Submit'])) {
-                            $KodeBarang = $_POST['KodeBarang'];
-                            $NamaBarang = $_POST['NamaBarang'];
-                            $Deskripsi  = $_POST['Deskripsi'];
-                            $Harga      = $_POST['Harga'];
+                            <input type="submit" name="submit" class="btn btn-primary" value="Create">
 
-                            $result = mysqli_query($conn, "INSERT INTO persediaan (KodeBarang, NamaBarang, Deskripsi, Harga) VALUES ('$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga')");
-                            echo "<br/>User added successfully. <a href='persediaan.php' class='btn btn-success' role='button'> View Data </a>";
-                        }
-                        ?>
+                        </form>
                     </div>
                 </div>
             </div>

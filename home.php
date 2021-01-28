@@ -59,7 +59,7 @@ require('config.php');
                         <?php
                         $sql = "SELECT * FROM persediaan";
                         $query = mysqli_query($conn, $sql);
-                        while ($data = $query->fetch_assoc()) {
+                        while ($data = mysqli_fetch_array($query)) {
                         ?>
                             <div class="col-md-3"><br>
                                 <div class="card" style="max-width: 15rem;">
