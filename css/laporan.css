@@ -37,3 +37,11 @@
     padding-left: 25px;
     color: rgb(4, 3, 3);
 }
+
+/* Footer */
+.sticky-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
