@@ -1,8 +1,6 @@
 <?php
-//include auth_session.php file on all user panel pages
 include("auth_session.php");
-require('config.php');
-
+include("config.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,7 +11,7 @@ require('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,89 +26,128 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/barang.css">
 
-    <title>Add Item</title>
+    <title>New Product</title>
 </head>
 
 <body>
     <!-- Navbar -->
-    <?php include("components/navbar.php"); ?>
-    <!-- End of Navbar -->
+    <?php include "components/navbar.php"; ?>
+    <!-- End Navbar -->
 
     <!-- Main -->
     <div class="container-fluid py-3">
         <div class="row">
             <div class="col-md-2">
-                <!-- SideBar -->
-                <?php include("components/sidebar.php"); ?>
+                <!-- Sidebar -->
+                <?php include "components/sidebar.php"; ?>
                 <!-- End Sidebar -->
             </div>
             <!-- Body -->
-            <?php
-            $baru = $conn->query("SELECT KodeBarang FROM persediaan ORDER BY KodeBarang DESC");
-            $KodeBarang = mysqli_fetch_array($baru);
-            $kb = $KodeBarang['KodeBarang'];
-            $urut = substr($kb, 6, 8);
-            $tambah = (int) $urut + 1;
-            $bln = date('m');
-
-            if (strlen($tambah) == 1) {
-                $format = "KB" . $bln . "-00" . $tambah;
-            } elseif (strlen($tambah) == 2) {
-                $format = "KB" . $bln . "-0" . $tambah;
-            } else {
-                $format = "KB" . $bln . "-" . $tambah;
-            }
-            ?>
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">New Item</div>
+                    <div class="card-header">
+                        New Product
+                    </div>
                     <div class="card-body">
-                        <form role="form" action="persediaan_create_aksi.php" method="POST" enctype="multipart/form-data">
+                        <?php
+                        $kode = $conn->query("SELECT KodeBarang FROM persediaan ORDER BY KodeBarang DESC");
+                        $KodeBarang = mysqli_fetch_array($kode);
+                        $kb = $KodeBarang['KodeBarang'];
+                        $urut = substr($kb, 6, 8);
+                        $tambah = (int) $urut + 1;
+                        $bln = date('m');
 
-                            <div class="form-group">
-                                <label for="KodeBarang">KodeBarang</label>
-                                <input type="text" name="KodeBarang" id="KodeBarang" value="<?= $format ?>" class="form-control" readonly />
+                        if (strlen($tambah) == 1) {
+                            $format = "KB" . $bln . "-00" . $tambah;
+                        } elseif (strlen($tambah) == 2) {
+                            $format = "KB" . $bln . "-0" . $tambah;
+                        } else {
+                            $format = "KB" . $bln . "-" . $tambah;
+                        }
+                        ?>
+                        <form role="form" action="persediaan_create.php" method="post" enctype="multipart/form-data">
+                            <div class="form-group mb-3">
+                                <label for="KodeBarang">Kode Barang</label>
+                                <input type="text" name="KodeBarang" id="KodeBarang" class="form-control" value="<?= $format; ?>" readonly>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="NamaBarang">Nama Barang</label>
-                                <input type="text" name="NamaBarang" class="form-control" id="NamaBarang" />
+                                <input type="text" name="NamaBarang" id="NamaBarang" class="form-control">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="Deskripsi">Deskripsi</label>
-                                <input type="text" name="Deskripsi" class="form-control" id="Deskripsi" />
+                                <textarea name="Deskripsi" id="Deskripsi" cols="10" class="form-control"></textarea>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="Harga">Harga</label>
-                                <input type="number" name="Harga" class="form-control" id="Harga" />
+                                <input type="text" name="Harga" id="Harga" class="form-control">
                             </div>
 
-                            <div class="form-group">
-                                <label for="Foto">Foto</label>
-                                <div class="form-group">
-                                    <input type="file" name="Foto" id="Foto" required="" />
-                                </div>
+                            <div class="form-group mb-3">
+                                <label for="foto">Foto</label>
+                                <input type="file" name="foto" id="foto" required="">
                             </div>
-                            <input type="submit" name="submit" class="btn btn-primary" value="Create">
 
+                            <div class="mb-3">
+                                <input type="submit" name="Submit" class="btn btn-primary btn-sm" value="Create">
+                            </div>
                         </form>
+
+                        <?php
+                        if (isset($_POST['Submit'])) {
+                            $KodeBarang = $_POST['KodeBarang'];
+                            $NamaBarang = $_POST['NamaBarang'];
+                            $Deskripsi  = $_POST['Deskripsi'];
+                            $Harga      = $_POST['Harga'];
+                            $foto       = $_FILES['foto']['name'];
+
+                            if ($foto != "") {
+                                $ekstensi_diperbolehkan = array('jpg', 'jpeg', 'png', 'gif');
+                                $x = explode('.', $foto);
+                                $ekstensi = strtolower(end($x));
+                                $file_tmp = $_FILES['foto']['tmp_name'];
+                                $rand = rand(1, 999);
+                                $nama_foto_baru = $rand . '-' . $foto;
+                                if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+                                    move_uploaded_file($file_tmp, 'assets/images/' . $nama_foto_baru);
+
+                                    $sql = "INSERT INTO persediaan(KodeBarang, NamaBarang, Deskripsi, Harga, foto) VALUES('$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga', '$nama_foto_baru')";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (!$result) {
+                                        die("Query gagal dijalankan: " . mysqli_errno($conn) .
+                                            " - " . mysqli_error($conn));
+                                    } else {
+                                        echo "<script>alert('Added Product Successfully.');window.location='persediaan.php';</script>";
+                                    }
+                                } else {
+                                    echo "<script>alert('Ekstensi foto yang dibolehkan hanya jpg, jpeg, png atau gif.');window.location='persediaan_create.php';</script>";
+                                }
+                            } else {
+                                $sql = "INSERT INTO persediaan(KodeBarang, NamaBarang, Deskripsi, Harga, foto) VALUES('$KodeBarang', '$NamaBarang', '$Deskripsi', '$Harga', null)";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die("Query gagal dijalankan: " . mysqli_errno($conn) .
+                                        " - " . mysqli_error($conn));
+                                } else {
+                                    echo "<script>alert('Added Product Successfully.');window.location='persediaan.php';</script>";
+                                }
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
             <!-- End Body -->
         </div>
     </div>
-    <!-- End Main Body -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>

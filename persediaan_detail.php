@@ -82,7 +82,7 @@ if ($_GET) {
                             <div class="card-body">
                                 <div class="row md-1">
                                     <div class="col-md-4">
-                                        <td><img src="images/<?= $data['Foto'] ?>" width="300"></td>
+                                        <td><img src="assets/images/<?= $data['foto'] ?>" width="300"></td>
                                     </div>
 
                                     <div class="col-md-8">

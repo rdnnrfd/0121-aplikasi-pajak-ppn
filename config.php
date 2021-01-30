@@ -1,7 +1,6 @@
 <?php
+$conn = mysqli_connect("localhost", "root", "", "pajak");
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$nama_db = "pajak";
-$conn = mysqli_connect($host, $user, $pass, $nama_db);
+if (mysqli_connect_errno()) {
+    echo "Koneksi database gagal: " . mysqli_connect_error();
+}

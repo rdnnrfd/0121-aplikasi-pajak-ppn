@@ -58,7 +58,7 @@ if ($_GET) {
                     </h5>
                     <hr />
                 </div>
-                <div class="container col-lg-9">
+                <div class="container col-lg-4">
                     <br>
                     <?php
                     $id = $_GET['id'];
@@ -68,7 +68,6 @@ if ($_GET) {
                         <div class="card" style="max-width: 900px;">
                             <div class="col-md-8">
                                 <div class="card-body">
-
                                     <small class="text-muted">Id Transaksi</small>
                                     <h3><?= $data['IdTransaksi']; ?></h3>
 

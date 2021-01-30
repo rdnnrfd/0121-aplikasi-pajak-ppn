@@ -79,6 +79,11 @@ require('config.php');
                                     <input type="number" class="form-control" id="Harga" value="<?php echo $data['Harga']; ?>" name="Harga" required="required">
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="foto">Foto</label><br>
+                                    <img src="assets/images/<?php echo $data['foto'] ?>" style="width: 100px; margin-right:15px;">
+                                    <input type="file" id="foto" name="foto">
+                                </div>
 
                                 <div class="form-group">
                                     <input type="submit" name="" class="btn btn-primary" value="Update">

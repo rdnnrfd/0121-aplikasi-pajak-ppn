@@ -82,7 +82,7 @@ require('config.php');
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                 </div>
 
                             </form>

@@ -1,9 +1,7 @@
 <?php
-//include auth_session.php file on all user panel pages
 include("auth_session.php");
 require('config.php');
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -13,7 +11,7 @@ require('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -33,15 +31,15 @@ require('config.php');
 
 <body>
     <!-- Navbar -->
-    <?php include("components/navbar.php"); ?>
-    <!-- End of Navbar -->
+    <?php include "components/navbar.php"; ?>
+    <!-- End Navbar -->
 
     <!-- Main -->
     <div class="container-fluid py-3">
         <div class="row">
             <div class="col-md-2">
-                <!-- SideBar -->
-                <?php include("components/sidebar.php"); ?>
+                <!-- Sidebar -->
+                <?php include "components/sidebar.php"; ?>
                 <!-- End Sidebar -->
             </div>
             <!-- Body -->
@@ -51,7 +49,7 @@ require('config.php');
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Data Transaksi
-                            <a href="home.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Tambah Transaksi</a>
+                            <a href="home.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Tambah Transaksi</a>
                         </h5>
                     </div>
                     <div class="card-body">
