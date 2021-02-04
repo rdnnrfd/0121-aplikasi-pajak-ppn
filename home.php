@@ -12,7 +12,7 @@ require('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,15 +25,20 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/home.css">
 
     <title>Katalog</title>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <?php include("components/navbar.php"); ?>
-    <!-- End of Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container topnav" id="myTopNav">
+            <a class="navbar-brand" href="home.php<?php include("auth_session.php"); ?>">Rdnnrfd Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
 
     <!-- Content -->
     <div class="container" id="content">
@@ -53,9 +58,7 @@ require('config.php');
 
             <section class="konten">
                 <div class="container">
-
                     <div class="row">
-
                         <?php
                         $sql = "SELECT * FROM persediaan";
                         $query = mysqli_query($conn, $sql);

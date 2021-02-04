@@ -34,7 +34,7 @@ if ($_GET) {
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/transaksi.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/transaksi.css">
 
     <title>Add Transaction</title>
 </head>

@@ -2,9 +2,12 @@
 
 * {
     font-family: 'Quicksand', sans-serif;
-    font-weight: bolder;
+    list-style: none;
+    text-decoration: none;
+}
+
+.table {
     text-align: center;
-    box-sizing: border-box;
 }
 
 /* Navbar */
@@ -30,7 +33,6 @@
     cursor: pointer;
 }
 
-.active,
 .bar:hover {
     background: rgb(255, 255, 255);
     padding-left: 25px;
@@ -39,8 +41,9 @@
 
 /* Footer */
 .sticky-footer {
-    position: fixed;
+    position: relative;
+    padding: 10px;
     left: 0;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
 }

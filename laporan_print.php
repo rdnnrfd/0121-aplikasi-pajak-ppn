@@ -2,8 +2,6 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 require('config.php');
-
-$query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi");
 ?>
 
 <!doctype html>
@@ -15,7 +13,7 @@ $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nomi
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,7 +26,7 @@ $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nomi
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/cetak.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/cetak.css">
 
     <title>Print</title>
 </head>
@@ -38,7 +36,7 @@ $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nomi
     <section id="header-kop">
         <div class="container-fluid">
             <table class="table table-borderless">
-                <tbody>
+                <thead>
                     <tr>
                         <th class="text-center">
                             <h4>Rdnnrfd Shop</h4>
@@ -47,55 +45,65 @@ $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nomi
                     <tr>
                         <td class="text-center">Jl. Pajajaran No. 12a, Kota Bandung, Jawa Barat</td>
                     </tr>
-                </tbody>
+                </thead>
             </table>
-            <hr>
         </div>
     </section>
 
-    <?php
-    $id = $_GET['id'];
-    $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, NamaBarang, Nominal, PPN, Total FROM transaksi WHERE id='$id'");
-    while ($data = mysqli_fetch_array($query)) {
-    ?>
-        <section id="body-of-report">
-            <div class="container">
-                <h4 class="text-center">Detail Laporan</h4>
-                <h5 class="text-center">Tanggal Transaksi: <?php echo $data['TglTransaksi']; ?></h5>
-                <h6 class="text-center">Id Transaksi: <?php echo $data['IdTransaksi']; ?></h6>
-                <br />
-                <table class="table table-bordered">
+    <section id="body-of-report">
+        <div class="container">
+            <h4 class="text-center">Jurnal</h4>
+            <br />
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <th class="border">Nama Barang</th>
-                        <th class="border"><?php echo $data['NamaBarang']; ?></th>
+                        <th class="border">NO</th>
+                        <th class="border">TANGGAL TRANSAKSI</th>
+                        <th class="border">KODE TRANSAKSI</th>
+                        <th class="border">KETERANGAN</th>
+                        <th class="border">DEBIT</th>
+                        <th class="border">KREDIT</th>
                     </tr>
-                    <tr>
-                    <tr>
-                        <th>Pembelian</th>
-                        <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
-                    </tr>
-                    <tr>
-                        <th>PPN Masukan</th>
-                        <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
-                    </tr>
-                    <th class="right">Kas</th>
-                    <td class="right"><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
-                    </tr>
+                </thead>
+                <?php
+                $query = mysqli_query($conn, "SELECT IdTransaksi, TglTransaksi, Nominal, PPN, Total FROM transaksi");
+                $no = 1;
+                while ($data = mysqli_fetch_array($query)) {
+                ?>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4" height="10%"><?php echo $no++; ?></td>
+                            <td rowspan="4"><?php echo $data['TglTransaksi']; ?></td>
+                            <td rowspan="4"><?php echo $data['IdTransaksi']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Kas</th>
+                            <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th class="right">Penjualan</th>
+                            <td>-</td>
+                            <td class="right"><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
+                        </tr>
+                        <tr>
+                            <th class="right">PPN Keluaran</th>
+                            <td>-</td>
+                            <td class="right"><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
+                        </tr>
+                    </tbody>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
+    </section>
 
-                </table>
-            </div><!-- /.container -->
-        </section>
-
-    <?php
-    }
-    mysqli_close($conn);
-    ?>
-
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function() {
             window.print();
         });
-    </script>
+    </script> -->
     <!-- End Main Body -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

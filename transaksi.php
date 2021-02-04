@@ -24,7 +24,7 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/transaksi.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/transaksi.css">
 
     <title>Data Transaksi</title>
 </head>
@@ -91,11 +91,11 @@ require('config.php');
                                             <a class="btn btn-secondary btn-sm" href="transaksi_detail.php?id=<?= $data['id']; ?>">
                                                 <i class="far fa-eye" aria-hidden="true"></i>
                                             </a> |
-                                            <a class="btn btn-success btn-sm" href="transaksi_update.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">
+                                            <a class="btn btn-warning btn-sm" href="transaksi_update.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
                                             <a class="btn btn-danger btn-sm" href="transaksi_delete.php?id=<?= $data['id']; ?>" onclick="return confirm('Are you sure to delete?')">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                <i class="far fa-trash-alt" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>

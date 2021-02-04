@@ -24,9 +24,9 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/barang.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/barang.css">
 
-    <title>Data Produk</title>
+    <title>Persediaan Barang</title>
 </head>
 
 <body>
@@ -49,8 +49,8 @@ require('config.php');
 
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
-                            Data Produk
-                            <a href="persediaan_create.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Tambah Data</a>
+                            Persediaan Barang
+                            <a href="persediaan_create.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Tambah <h1 class="display-1"></h1></a>
                         </h5>
                     </div>
 
@@ -84,7 +84,7 @@ require('config.php');
                                                 <i class="fa fa-pen-square" aria-hidden="true"></i>
                                             </a> |
                                             <a href="persediaan_delete.php?id=<?= $data['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                <i class="far fa-trash-alt" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>

@@ -12,7 +12,7 @@ require('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,7 +25,7 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
 
     <title>Dashboard</title>
 </head>
@@ -87,9 +87,9 @@ require('config.php');
                             <div class="col">
                                 <div class="card h-100 shadow p-2 bg-white rounded">
                                     <div class="card-body">
-                                        <h5 class="card-title"><i class="fas fa-file-alt"></i> Laporan</h5>
+                                        <h5 class="card-title"><i class="fas fa-file-alt"></i> Jurnal</h5>
                                     </div>
-                                    <a href="laporan.php" class="btn btn-primary bg-primary">Data Laporan <i class="fas fa-angle-right"></i></a>
+                                    <a href="laporan.php" class="btn btn-primary bg-primary">Data Jurnal <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
                             <div class="col">

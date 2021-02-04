@@ -13,7 +13,7 @@ require('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,9 +26,9 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/laporan.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/laporan.css">
 
-    <title>Laporan</title>
+    <title>Jurnal</title>
 </head>
 
 <body>
@@ -49,21 +49,26 @@ require('config.php');
                 <div class="card">
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
-                            Laporan
+                            Jurnal
                         </h5>
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
+                            <div class="container">
+                                <a class="btn btn-secondary btn-sm" href="laporan_print.php">
+                                    <i class="fas fa-print" aria-hidden="true"></i> Cetak
+                                </a>
+                            </div>
+                            <br>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>ID Transaksi</th>
                                         <th>Tanggal Transaksi</th>
-                                        <th>Pembelian</th>
-                                        <th>PPN Masukan</th>
                                         <th>Kas</th>
-                                        <th>Action</th>
+                                        <th>Penjualan</th>
+                                        <th>PPN Keluaran</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,29 +76,23 @@ require('config.php');
                                     $no = 1;
                                     $query = mysqli_query($conn, "SELECT * FROM transaksi");
 
-
                                     while ($data = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
                                             <th><?php echo $no++; ?></th>
                                             <td><?php echo $data['IdTransaksi']; ?></td>
                                             <td><?php echo $data['TglTransaksi']; ?></td>
+                                            <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
                                             <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
                                             <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
-                                            <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
-                                            <td>
-                                                <a class="btn btn-success btn-sm" href="laporan_print.php?id=<?= $data['id']; ?>">
-                                                    <i class="fas fa-print" aria-hidden="true"></i>
-                                            </td>
                                         </tr>
-                                    <?php
+                                <tbody>
+                                <?php
                                     }
-                                    ?>
-                                <tfoot>
+                                ?>
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ include("config.php");
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/barang.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/barang.css">
 
     <title>New Product</title>
 </head>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 
     <title>Pajak</title>
 </head>

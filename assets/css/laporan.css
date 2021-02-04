@@ -4,6 +4,10 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+.table {
+    text-align: center;
+}
+
 /* Navbar */
 .navbar-brand {
     font-family: 'Courgette', cursive;
@@ -34,27 +38,11 @@
     color: rgb(4, 3, 3);
 }
 
-.table {
-    text-align: center;
-}
-
-h5 {
-    font-weight: bold;
-}
-
-.card-footer {
-    text-align: center;
-    align-items: center;
-}
-
-h5.price {
-    color: red;
-}
-
 /* Footer */
 .sticky-footer {
-    position: fixed;
+    position: relative;
+    padding: 10px;
     left: 0;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
 }

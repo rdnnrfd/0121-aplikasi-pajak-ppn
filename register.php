@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 
     <title>Pajak | Registrasi</title>
 </head>
@@ -43,8 +43,9 @@
                     $password = stripslashes($_REQUEST['password']);
                     $password = mysqli_real_escape_string($conn, $password);
                     $created_at = date("Y-m-d H:i:s");
-                    $query    = "INSERT into `user` (username, email, password, created_at)
-                     VALUES ('$username', '$email', '" . md5($password) . "', '$created_at')";
+                    $updated_at = date("Y-m-d H:i:s");
+                    $query    = "INSERT into `user` (username, email, password, created_at, updated_at)
+                     VALUES ('$username', '$email', '" . md5($password) . "', '$created_at', '$updated_at')";
                     $result   = mysqli_query($conn, $query);
                     if ($result) {
                         echo "<div class='form'>
