@@ -3,15 +3,6 @@
 include("auth_session.php");
 require('config.php');
 
-if ($_GET) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM transaksi WHERE id ='$id'";
-    $query = mysqli_query($conn, $sql);
-    $result = mysqli_fetch_array($query);
-} else {
-    echo "Nomor Transaksi Tidak Terbaca";
-    exit;
-}
 ?>
 
 <!doctype html>
@@ -36,7 +27,7 @@ if ($_GET) {
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/transaksi.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/transaksi_detail.css">
 
     <title>Detail Transaksi</title>
 </head>
@@ -51,53 +42,67 @@ if ($_GET) {
         <div class="row">
             <!-- Body -->
             <div class="col-md">
-                <div class="container">
-                    <h5 class="d-flex justify-content-between align-items-center">
-                        Detail Transaksi
-                        <a href="transaksi.php" class="btn btn-secondary"> Back</a>
-                    </h5>
-                    <hr />
-                </div>
-                <div class="container col-lg-4">
+                <div class="container col-sm-4">
                     <br>
-                    <?php
-                    $id = $_GET['id'];
-                    $query = mysqli_query($conn, "SELECT * FROM transaksi WHERE id='$id'");
-                    while ($data = mysqli_fetch_array($query)) {
-                    ?>
-                        <div class="card" style="max-width: 900px;">
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <small class="text-muted">Id Transaksi</small>
-                                    <h3><?= $data['IdTransaksi']; ?></h3>
-
-                                    <small class="text-muted">Tanggal Transaksi</small>
-                                    <h5 class="card-title"><?= $data['TglTransaksi']; ?></h5>
-
-                                    <small class="text-muted">Nama Barang</small>
-                                    <h5 class="card-title"><?= $data['NamaBarang']; ?></h5>
-
-                                    <small class="text-muted">Qty</small>
-                                    <h5 class="card-title"><?= $data['Qty']; ?></h5>
-
-                                    <small class="text-muted">Harga</small>
-                                    <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
-
-                                    <small class="text-muted">Nominal</small>
-                                    <h5><?= "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></h5>
-
-                                    <small class="text-muted">PPN</small>
-                                    <h5><?= "Rp " . number_format($data['PPN'], 2, ",", "."); ?></h5>
-
-                                    <small class="text-muted">Total</small>
-                                    <h5><?= "Rp " . number_format($data['Total'], 2, ",", "."); ?></h5>
+                    <div class="card">
+                        <div class=" col-sm">
+                            <div class="card-body">
+                                <div class="col-md-auto">
+                                    <h5>Detail Transaksi</h5>
+                                    <hr>
                                 </div>
+                                <?php
+                                $IdTransaksi = $_GET['IdTransaksi'];
+                                $query = mysqli_query($conn, "SELECT * FROM transaksi WHERE IdTransaksi='$IdTransaksi'");
+                                while ($data = mysqli_fetch_array($query)) {
+                                ?>
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th>Id Transaksi</th>
+                                                <td colspan="3"><?= $data['IdTransaksi']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tanggal Transaksi</th>
+                                                <td colspan="3"><?= $data['TglTransaksi']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Nama Barang</th>
+                                                <td colspan="3"><?= $data['NamaBarang']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Jumlah</th>
+                                                <td colspan="3"><?= $data['Qty']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Harga</th>
+                                                <td colspan="3"><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Penjualan</th>
+                                                <td colspan="3"><?= "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>PPN Keluaran (10%)</th>
+                                                <td colspan="3"><?= "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Pembayaran</th>
+                                                <td colspan="3"><?= "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="col-md-auto">
+                                        <hr>
+                                        <h5><a href=" transaksi.php" class="btn btn-secondary btn-sm"> Back</a></h5>
+                                    </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             <?php
-                    }
-                    mysqli_close($conn);
+                                }
+                                mysqli_close($conn);
             ?>
             </div>
         </div>

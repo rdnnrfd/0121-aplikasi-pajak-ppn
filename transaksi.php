@@ -48,7 +48,7 @@ require('config.php');
                 <div class="card">
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
-                            Data Transaksi
+                            Data Transaksi Penjualan
                             <a href="home.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Tambah Transaksi</a>
                         </h5>
                     </div>
@@ -59,9 +59,9 @@ require('config.php');
                                     <th>#</th>
                                     <th>ID Transaksi</th>
                                     <th>Tanggal Transaksi</th>
-                                    <th>Nominal</th>
-                                    <th>PPN</th>
                                     <th>Total</th>
+                                    <th>PPN</th>
+                                    <th>Total Bayar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -88,7 +88,7 @@ require('config.php');
                                         <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
                                         <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
                                         <td>
-                                            <a class="btn btn-secondary btn-sm" href="transaksi_detail.php?id=<?= $data['id']; ?>">
+                                            <a class="btn btn-secondary btn-sm" href="transaksi_detail.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">
                                                 <i class="far fa-eye" aria-hidden="true"></i>
                                             </a> |
                                             <a class="btn btn-warning btn-sm" href="transaksi_update.php?IdTransaksi=<?= $data['IdTransaksi']; ?>">

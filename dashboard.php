@@ -83,7 +83,7 @@ require('config.php');
 
                 <section>
                     <div class="container py-3">
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
                             <div class="col">
                                 <div class="card h-100 shadow p-2 bg-white rounded">
                                     <div class="card-body">
@@ -98,14 +98,6 @@ require('config.php');
                                         <h5 class="card-title"><i class="fas fa-info-circle"></i> Informasi</h5>
                                     </div>
                                     <a href="informasi.php" class="btn btn-danger bg-danger">Lihat <i class="fas fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100 shadow p-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><i class="fas fa-cogs"></i> Setting</h5>
-                                    </div>
-                                    <a href="setting.php" class="btn btn-secondary bg-secondary">Lihat <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>

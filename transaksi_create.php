@@ -2,15 +2,6 @@
 include("auth_session.php");
 require('config.php');
 
-if ($_GET) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM persediaan WHERE id ='$id'";
-    $query = mysqli_query($conn, $sql);
-    $result = mysqli_fetch_array($query);
-} else {
-    echo "Nomor Transaksi Tidak Terbaca";
-    exit;
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -97,7 +88,7 @@ if ($_GET) {
                                     </div>
 
                                     <div class="col-12 form-group">
-                                        <label for="Qty">Qty</label>
+                                        <label for="Qty">Jumlah</label>
                                         <input type="number" class="form-control" name="Qty">
                                     </div>
 

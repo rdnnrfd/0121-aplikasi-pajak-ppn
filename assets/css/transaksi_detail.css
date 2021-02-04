@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand&display=swap');
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.table {
+    display: flex;
+}
+
+td {
+    text-align: left;
+}
+
+th {
+    text-align: right;
+}
+
+h5 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: .25rem;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-family: 'Courgette', cursive;
+    font-size: 32px;
+}
+
+.dropdown {
+    font-family: 'Courgette', cursive;
+}
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+.bar {
+    margin-right: 16px;
+    transition-duration: .4s;
+    background: rgb(18, 31, 33);
+    padding-left: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.active,
+.bar:hover {
+    background: rgb(255, 255, 255);
+    padding-left: 25px;
+    color: rgb(4, 3, 3);
+}
+
+/* Footer */
+.sticky-footer {
+    position: relative;
+    padding: 10px;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+}

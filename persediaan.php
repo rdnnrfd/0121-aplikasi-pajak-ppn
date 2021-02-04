@@ -50,7 +50,7 @@ require('config.php');
                     <div class="card-header">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Persediaan Barang
-                            <a href="persediaan_create.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Tambah <h1 class="display-1"></h1></a>
+                            <a href="persediaan_create.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Tambah</a>
                         </h5>
                     </div>
 
