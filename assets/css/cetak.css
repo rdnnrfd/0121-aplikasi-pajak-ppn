@@ -34,17 +34,9 @@
     color: rgb(4, 3, 3);
 }
 
-th {
-    width: 10%;
-}
-
-td {
-    width: 10%;
-}
-
 table {
-    border: 1px solid black;
-    padding: 8px;
+    border-collapse: collapse;
+    width: 50%;
 }
 
 .right {

@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("auth_session.php");
+include("auth/auth_session.php");
 require('config.php');
 ?>
 <!doctype html>
@@ -30,80 +30,66 @@ require('config.php');
     <title>Katalog</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container topnav" id="myTopNav">
-            <a class="navbar-brand" href="home.php<?php include("auth_session.php"); ?>">Rdnnrfd Shop</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+<!-- Navbar -->
+<?php include("components/navbar.php"); ?>
+<!-- End of Navbar -->
 
-    <!-- Content -->
-    <div class="container" id="content">
-        <article id="beranda" class="container py-5">
-            <h2>Hallo!</h2>
-            <br>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="Home.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php">Dashboard</a>
-                </li>
-            </ul>
-            <hr>
-            <!-- body -->
+<!-- Content -->
+<div class="container" id="content">
+    <article id="beranda" class="container py-5">
+        <h2>Hallo!</h2>
+        <br>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="Home.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.php">Dashboard</a>
+            </li>
+        </ul>
+        <hr>
+        <!-- body -->
 
-            <section class="konten">
-                <div class="container">
-                    <div class="row">
-                        <?php
-                        $sql = "SELECT * FROM persediaan";
-                        $query = mysqli_query($conn, $sql);
-                        while ($data = mysqli_fetch_array($query)) {
-                        ?>
-                            <div class="col-md-3"><br>
-                                <div class="card" style="max-width: 15rem;">
-                                    <img src="assets/images/<?= $data['foto'] ?>" width="100" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5>
-                                            <?= $data['NamaBarang']; ?>
-                                        </h5>
+        <section class="konten">
+            <div class="container">
+                <div class="row">
+                    <?php
+                    $sql = "SELECT * FROM persediaan";
+                    $query = mysqli_query($conn, $sql);
+                    while ($data = mysqli_fetch_array($query)) {
+                    ?>
+                        <div class="col-md-3"><br>
+                            <div class="card" style="max-width: 15rem;">
+                                <img src="assets/images/<?= $data['foto'] ?>" width="100" class="card-img-top">
+                                <div class="card-body">
+                                    <h5>
+                                        <?= $data['NamaBarang']; ?>
+                                    </h5>
 
-                                        <small class="text-muted">Harga</small>
-                                        <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
-                                        <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary btn-sm">Detail</a> |
-                                        <a href="transaksi_create.php?id=<?= $data['id']; ?>" class="btn btn-danger btn-sm">Checkout</a>
-                                    </div>
+                                    <small class="text-muted">Harga</small>
+                                    <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
+                                    <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary btn-sm">Detail</a> |
+                                    <a href="transaksi_create.php?id=<?= $data['id']; ?>" class="btn btn-danger btn-sm">Checkout</a>
                                 </div>
                             </div>
-                        <?php
-                        }
-                        mysqli_close($conn);
-                        ?>
-                    </div>
-
+                        </div>
+                    <?php
+                    }
+                    mysqli_close($conn);
+                    ?>
                 </div>
-            </section>
 
-            <!-- end body -->
-        </article>
-    </div>
-    <!-- End Content -->
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <?php include("components/footer.php"); ?>
-    <!-- End Footer -->
+        <!-- end body -->
+    </article>
+</div>
+<!-- End Content -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<!-- Footer -->
+<?php include("components/footer.php"); ?>
+<!-- End Footer -->
 
 </body>
 

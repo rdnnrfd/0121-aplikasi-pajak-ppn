@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("auth_session.php");
+include("auth/auth_session.php");
 require('config.php');
 ?>
 
@@ -61,7 +61,7 @@ require('config.php');
                             </div>
                             <br>
                             <table class="table table-hover">
-                                <thead>
+                                <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
                                         <th>ID Transaksi</th>

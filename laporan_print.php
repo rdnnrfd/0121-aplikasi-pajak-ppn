@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("auth_session.php");
+include("auth/auth_session.php");
 require('config.php');
 ?>
 
@@ -36,16 +36,14 @@ require('config.php');
     <section id="header-kop">
         <div class="container-fluid">
             <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th class="text-center">
-                            <h4>Rdnnrfd Shop</h4>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td class="text-center">Jl. Pajajaran No. 12a, Kota Bandung, Jawa Barat</td>
-                    </tr>
-                </thead>
+                <tr>
+                    <th class="text-center" font-weight="bold">
+                        <h4>Rdnnrfd Shop</h4>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="text-center">Jl. Pajajaran No. 12a, Kota Bandung, Jawa Barat</td>
+                </tr>
             </table>
         </div>
     </section>
@@ -57,7 +55,7 @@ require('config.php');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th class="border">NO</th>
+                        <th class="border" width="5%">NO</th>
                         <th class="border">TANGGAL TRANSAKSI</th>
                         <th class="border">KODE TRANSAKSI</th>
                         <th class="border">KETERANGAN</th>
@@ -72,7 +70,7 @@ require('config.php');
                 ?>
                     <tbody>
                         <tr>
-                            <td rowspan="4" height="10%"><?php echo $no++; ?></td>
+                            <td rowspan="4" width="5%"><?php echo $no++; ?></td>
                             <td rowspan="4"><?php echo $data['TglTransaksi']; ?></td>
                             <td rowspan="4"><?php echo $data['IdTransaksi']; ?></td>
                         </tr>
@@ -99,19 +97,12 @@ require('config.php');
         </div>
     </section>
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
             window.print();
         });
-    </script> -->
+    </script>
     <!-- End Main Body -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
 </body>
 

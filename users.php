@@ -1,6 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
-include("auth_session.php");
+include("auth/auth_session.php");
 require('config.php');
 ?>
 
@@ -58,7 +57,7 @@ require('config.php');
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
-                            <thead>
+                            <thead class="table-dark">
                                 <tr>
                                     <th>#</th>
                                     <th>Username</th>
@@ -78,11 +77,8 @@ require('config.php');
                                         <td><?= $data['username'] ?></td>
                                         <td><?= $data['email'] ?></td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="user_update.php?id=<?= $data['id'] ?>">
-                                                <i class="fa fa-pen-square sm-3" aria-hidden="true"></i>
-                                            </a> |
                                             <a class="btn btn-danger btn-sm" href="user_delete.php?id=<?= $data['id'] ?>">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                <i class="far fa-trash-alt" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -104,15 +100,6 @@ require('config.php');
     <!-- Footer -->
     <?php include("components/footer.php"); ?>
     <!-- End Footer -->
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
 </body>
 
 </html>
