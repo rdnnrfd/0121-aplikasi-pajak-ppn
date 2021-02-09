@@ -9,26 +9,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
-
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
 
-    <title>Pajak</title>
+    <title>Rdnnrfd Shop | Login</title>
 </head>
 
 <body>
     <div class="container" id="content">
         <article id="login" class="container py-5">
-            <h2>Aplikasi Pajak PPN</h2>
+            <h2>Aplikasi Penjualan & Perhitungan Pajak PPN Keluaran</h2>
             <section>
                 <?php
                 require('../config.php');
@@ -61,8 +51,8 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     <div class="card">
-                                        <div class="card-header">Login</div>
                                         <div class="card-body">
+                                            <h5>Login</h5><br>
                                             <form class="form" method="post" name="login">
                                                 <div class="form-group row">
                                                     <label for="username" class="col-md-4 text-md-right">Username</label>
@@ -96,7 +86,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
             </section>
         </article>
     </div>

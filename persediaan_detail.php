@@ -36,9 +36,9 @@ if ($_GET) {
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/barang.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/barang_detail.css">
 
-    <title>Detail Item</title>
+    <title>Rdnnrfd Shop | Detail Item</title>
 </head>
 
 <body>
@@ -52,9 +52,7 @@ if ($_GET) {
             <!-- Body -->
             <div class="col-md">
                 <div class="container">
-                    <h5 class="d-flex justify-content-between align-items-center">
-                        DETAIL ITEM
-                    </h5>
+
                     <ul class="nav justify-content-end">
                         <li class="nav-item">
                             <a class="nav-link" href="persediaan.php">Daftar Produk</a>
@@ -64,6 +62,9 @@ if ($_GET) {
                         </li>
                     </ul>
                     <hr />
+                    <h5>
+                        DETAIL ITEM
+                    </h5>
                 </div>
                 <div class="container col-lg-9">
                     <br>
@@ -73,13 +74,10 @@ if ($_GET) {
                     while ($data = mysqli_fetch_array($query)) {
                     ?>
                         <div class="card" style="max-width: 900px;">
-                            <div class="card-header">
+                            <div class="card-body">
                                 <h5>
                                     <?= $data['NamaBarang']; ?>
                                 </h5>
-                            </div>
-
-                            <div class="card-body">
                                 <div class="row md-1">
                                     <div class="col-md-4">
                                         <td><img src="assets/images/<?= $data['foto'] ?>" width="300"></td>

@@ -27,7 +27,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/users.css">
 
-    <title>Add User</title>
+    <title>Rdnnrfd Shop | Add User</title>
 </head>
 
 <body>
@@ -74,10 +74,9 @@ require('config.php');
             ?>
                 <div class="col-md-10">
                     <div class="card">
-                        <div class="card-header">
-                            <h5>New User</h5>
-                        </div>
                         <div class="card-body">
+                            <h5>New User</h5>
+                            <br>
                             <form>
                                 <div class="form-group">
                                     <label for="username">Username</label>

@@ -26,7 +26,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/transaksi.css">
 
-    <title>Data Transaksi</title>
+    <title>Rdnnrfd Shop | Data Transaksi</title>
 </head>
 
 <body>
@@ -46,13 +46,12 @@ require('config.php');
 
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Data Transaksi Penjualan
                             <a href="home.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Tambah Transaksi</a>
                         </h5>
-                    </div>
-                    <div class="card-body">
+                        <br>
                         <table class="table table-hover">
                             <thead class="table-dark">
                                 <tr>

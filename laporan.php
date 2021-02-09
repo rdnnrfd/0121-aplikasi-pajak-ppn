@@ -28,7 +28,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/laporan.css">
 
-    <title>Jurnal</title>
+    <title>Rdnnrfd Shop | Jurnal</title>
 </head>
 
 <body>
@@ -47,51 +47,45 @@ require('config.php');
             <!-- Body -->
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Jurnal
+                            <a class="btn btn-secondary btn-sm" href="laporan_print.php">
+                                <i class="fas fa-print" aria-hidden="true"></i> Cetak
+                            </a>
                         </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-fluid">
-                            <div class="container">
-                                <a class="btn btn-secondary btn-sm" href="laporan_print.php">
-                                    <i class="fas fa-print" aria-hidden="true"></i> Cetak
-                                </a>
-                            </div>
-                            <br>
-                            <table class="table table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>ID Transaksi</th>
-                                        <th>Tanggal Transaksi</th>
-                                        <th>Kas</th>
-                                        <th>Penjualan</th>
-                                        <th>PPN Keluaran</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $no = 1;
-                                    $query = mysqli_query($conn, "SELECT * FROM transaksi");
-
-                                    while ($data = mysqli_fetch_array($query)) {
-                                    ?>
-                                        <tr>
-                                            <th><?php echo $no++; ?></th>
-                                            <td><?php echo $data['IdTransaksi']; ?></td>
-                                            <td><?php echo $data['TglTransaksi']; ?></td>
-                                            <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
-                                            <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
-                                            <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
-                                        </tr>
-                                <tbody>
+                        <br>
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>ID Transaksi</th>
+                                    <th>Tanggal Transaksi</th>
+                                    <th>Kas</th>
+                                    <th>Penjualan</th>
+                                    <th>PPN Keluaran</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                                    }
+                                $no = 1;
+                                $query = mysqli_query($conn, "SELECT * FROM transaksi");
+
+                                while ($data = mysqli_fetch_array($query)) {
                                 ?>
-                            </table>
-                        </div>
+                                    <tr>
+                                        <th><?php echo $no++; ?></th>
+                                        <td><?php echo $data['IdTransaksi']; ?></td>
+                                        <td><?php echo $data['TglTransaksi']; ?></td>
+                                        <td><?php echo "Rp " . number_format($data['Total'], 2, ",", "."); ?></td>
+                                        <td><?php echo "Rp " . number_format($data['Nominal'], 2, ",", "."); ?></td>
+                                        <td><?php echo "Rp " . number_format($data['PPN'], 2, ",", "."); ?></td>
+                                    </tr>
+                            <tbody>
+                            <?php
+                                }
+                            ?>
+                        </table>
                     </div>
                 </div>
             </div>

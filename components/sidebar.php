@@ -1,7 +1,9 @@
 <div class="sidebar" id="sidebar">
-    <div class="list-group mb-3">
+    <div class="list-group mb-2">
         <a href="dashboard.php" class="bar list-group-item list-group-item-action"> <i class="fas fa-home"></i> Dashboard</a>
     </div>
+</div>
+<div class="sidebar" id="sidebar">
     <div class="list-group" id="sidebar">
         <a href="users.php" class="bar list-group-item list-group-item-action" id="bar active"> <i class="fas fa-user"></i> User</a>
         <a href="persediaan.php" class="bar list-group-item list-group-item-action" id="bar"> <i class="fas fa-clipboard-list"></i> Persediaan</a>

@@ -28,7 +28,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/barang.css">
 
-    <title>Update Item</title>
+    <title>Rdnnrfd Shop | Update Item</title>
 </head>
 
 <body>
@@ -48,8 +48,8 @@ require('config.php');
 
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Update Item</div>
                     <div class="card-body">
+                        <h5>Update Item</h5>
 
                         <?php
                         $KodeBarang = $_GET['KodeBarang'];

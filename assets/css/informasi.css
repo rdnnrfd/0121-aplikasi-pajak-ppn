@@ -2,6 +2,21 @@
 
 * {
     font-family: 'Quicksand', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.table {
+    text-align: center;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+.card,
+.sidebar {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Navbar */
@@ -18,10 +33,6 @@
     text-transform: uppercase;
 }
 
-.sidebar {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 .bar {
     margin-right: 16px;
     transition-duration: .4s;
@@ -31,38 +42,15 @@
     cursor: pointer;
 }
 
-.active,
 .bar:hover {
     background: rgb(255, 255, 255);
     padding-left: 25px;
     color: rgb(4, 3, 3);
 }
 
-.table {
-    text-align: center;
-}
-
-h5 {
-    font-weight: bold;
-    text-align: center;
-}
-
-li {
-    font-weight: bold;
-}
-
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-h5.price {
-    color: red;
-    text-align: left;
-}
-
 /* Footer */
 .sticky-footer {
-    position: relative;
+    position: fixed;
     padding: 10px;
     left: 0;
     bottom: 0px;

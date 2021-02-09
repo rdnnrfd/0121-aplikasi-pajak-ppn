@@ -42,3 +42,7 @@ table {
 .right {
     text-align: right;
 }
+
+h4 {
+    font-weight: bold;
+}

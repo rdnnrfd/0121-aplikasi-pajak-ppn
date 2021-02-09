@@ -27,7 +27,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/transaksi.css">
 
-    <title>Edit Transaction</title>
+    <title>Rdnnrfd Shop | Edit Transaction</title>
 </head>
 
 <body>
@@ -46,8 +46,9 @@ require('config.php');
             <!-- Body -->
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Edit Transaction</div>
                     <div class="card-body">
+                        <h5>Edit Transaction</h5>
+                        <br>
                         <?php
                         $IdTransaksi = $_GET['IdTransaksi'];
 

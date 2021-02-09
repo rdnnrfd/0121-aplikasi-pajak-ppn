@@ -26,9 +26,9 @@ require('config.php');
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/users.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/informasi.css">
 
-    <title>Informasi</title>
+    <title>Rdnnrfd Shop | Informasi</title>
 </head>
 
 <body>
@@ -47,13 +47,11 @@ require('config.php');
             <!-- Body -->
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Informasi
                         </h5>
-                    </div>
-                    <div class="card-body">
-
+                        <br>
                         <form>
                             <div class="row mb-3">
                                 <label for="Nama" class="col-sm-2 col-form-label">Nama</label>
@@ -84,14 +82,12 @@ require('config.php');
                             </div>
 
                             <div class="row mb-3">
-                                <label for="sosmed" class="col-sm-2 col-form-label">Intagram / Twitter</label>
+                                <label for="sosmed" class="col-sm-2 col-form-label">Intagram</label>
                                 <div class="col-sm-5">
                                     <input type="sosmed" class="form-control" id="sosmed" aria-label="readonly input example" readonly placeholder="@rdnnrfdshop">
                                 </div>
                             </div>
-
                         </form>
-
                     </div>
                 </div>
             </div>

@@ -27,7 +27,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/home.css">
 
-    <title>Katalog</title>
+    <title>Rdnnrfd Shop | Katalog</title>
 </head>
 
 <!-- Navbar -->

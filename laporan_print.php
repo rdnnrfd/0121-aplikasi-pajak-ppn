@@ -28,7 +28,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/cetak.css">
 
-    <title>Print</title>
+    <title>Rdnnrfd Shop | Cetak</title>
 </head>
 
 <body>
@@ -55,7 +55,7 @@ require('config.php');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th class="border" width="5%">NO</th>
+                        <th class="border">NO</th>
                         <th class="border">TANGGAL TRANSAKSI</th>
                         <th class="border">KODE TRANSAKSI</th>
                         <th class="border">KETERANGAN</th>

@@ -27,7 +27,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/transaksi.css">
 
-    <title>Add Transaction</title>
+    <title>Rdnnrfd Shop | Add Transaction</title>
 </head>
 
 <body>

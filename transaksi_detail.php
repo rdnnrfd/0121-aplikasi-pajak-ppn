@@ -29,7 +29,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/transaksi_detail.css">
 
-    <title>Detail Transaksi</title>
+    <title>Rdnnrfd Shop | Detail Transaksi</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@ require('config.php');
                 <div class="container col-sm-4">
                     <br>
                     <div class="card">
-                        <div class=" col-sm">
+                        <div class="col-sm">
                             <div class="card-body">
                                 <div class="col-md-auto">
                                     <h5>Detail Transaksi</h5>

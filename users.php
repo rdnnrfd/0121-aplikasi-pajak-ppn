@@ -30,7 +30,7 @@ require('config.php');
     <!-- JS -->
     <script src="js/main.js"></script>
 
-    <title>Data User</title>
+    <title>Rdnnrfd Shop | Data User</title>
 </head>
 
 <body>
@@ -49,13 +49,12 @@ require('config.php');
             <!-- Body -->
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Data User
                             <a href="user_create.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Add User</a>
                         </h5>
-                    </div>
-                    <div class="card-body">
+                        <br>
                         <table class="table table-hover">
                             <thead class="table-dark">
                                 <tr>

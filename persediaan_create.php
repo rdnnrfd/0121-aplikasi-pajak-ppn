@@ -26,7 +26,7 @@ include("config.php");
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/barang.css">
 
-    <title>New Product</title>
+    <title>Rdnnrfd Shop | New Product</title>
 </head>
 
 <body>
@@ -45,10 +45,8 @@ include("config.php");
             <!-- Body -->
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
-                        New Product
-                    </div>
                     <div class="card-body">
+                        <h5>New Product</h5><br>
                         <?php
                         $kode = $conn->query("SELECT KodeBarang FROM persediaan ORDER BY KodeBarang DESC");
                         $KodeBarang = mysqli_fetch_array($kode);

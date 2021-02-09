@@ -4,6 +4,11 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+body {
+    background-color: rgb(32, 184, 230);
+    text-shadow: 2px 2px 4px #ffff;
+}
+
 h2 {
     font-family: 'Courgette', cursive;
     text-align: center;
@@ -11,4 +16,5 @@ h2 {
 
 .card {
     text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }

@@ -27,7 +27,7 @@ require('config.php');
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
 
-    <title>Dashboard</title>
+    <title>Rdnnrfd Shop | Dashboard</title>
 </head>
 
 <body>
@@ -42,10 +42,10 @@ require('config.php');
             <br>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="Home.php">Home</a>
+                    <a class="nav-link" href="Home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php">Dashboard</a>
+                    <a class="nav-link active" aria-current="page" href="dashboard.php">Dashboard</a>
                 </li>
             </ul>
             <hr>
@@ -54,7 +54,7 @@ require('config.php');
                     <div class="container py-3">
                         <div class="row row-cols-1 row-cols-md-3 g-4">
                             <div class="col">
-                                <div class="card h-100 shadow p-2 bg-white rounded">
+                                <div class="card h-100 p-2 bg-white rounded">
                                     <div class="card-body">
                                         <h5 class="card-title"> <i class="fas fa-user"></i> User</h5>
                                     </div>
@@ -62,7 +62,7 @@ require('config.php');
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card h-100 shadow p-2 bg-white rounded">
+                                <div class="card h-100 p-2 bg-white rounded">
                                     <div class="card-body">
                                         <h5 class="card-title"><i class="fas fa-clipboard-list"></i> Daftar Produk</h5>
                                     </div>
@@ -70,7 +70,7 @@ require('config.php');
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card h-100 shadow p-2 bg-white rounded">
+                                <div class="card h-100 p-2 bg-white rounded">
                                     <div class="card-body">
                                         <h5 class="card-title"><i class="fas fa-receipt"></i> Transaksi</h5>
                                     </div>
@@ -85,7 +85,7 @@ require('config.php');
                     <div class="container py-3">
                         <div class="row row-cols-1 row-cols-md-2 g-4">
                             <div class="col">
-                                <div class="card h-100 shadow p-2 bg-white rounded">
+                                <div class="card h-100 p-2 bg-white rounded">
                                     <div class="card-body">
                                         <h5 class="card-title"><i class="fas fa-file-alt"></i> Jurnal</h5>
                                     </div>
@@ -93,7 +93,7 @@ require('config.php');
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card h-100 shadow p-2 bg-white rounded">
+                                <div class="card h-100 p-2 bg-white rounded">
                                     <div class="card-body">
                                         <h5 class="card-title"><i class="fas fa-info-circle"></i> Informasi</h5>
                                     </div>
