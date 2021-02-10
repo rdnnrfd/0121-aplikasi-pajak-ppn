@@ -60,15 +60,9 @@ require('config.php');
                      VALUES ('$username', '$email', '" . md5($password) . "', '$created_at')";
                 $result   = mysqli_query($conn, $query);
                 if ($result) {
-                    echo "<div class='form'>
-                            <h3>You are Created successfully.</h3><br/>
-                            <p class='link'>Click here to <a href='users.php'>Back</a></p>
-                        </div>";
+                    echo "<script>alert('You are Created successfully.');window.location='users.php';</script>";
                 } else {
-                    echo "<div class='form'>
-                            <h3>Required fields are missing.</h3><br/>
-                            <p class='link'>Click here to <a href='user_create.php'>Created</a> again.</p>
-                        </div>";
+                    echo "<script>alert('Required fields are missing.');window.location='user_create.php';</script>";
                 }
             } else {
             ?>
@@ -78,19 +72,21 @@ require('config.php');
                             <h5>New User</h5>
                             <br>
                             <form>
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="username">Username</label>
                                     <input id="username" type="text" class="form-control" name="username" placeholder="Username" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="email">Email</label>
                                     <input id="email" type="text" class="form-control" name="email" placeholder="Email" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
                                 </div>
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <div class="col-12 form-group">
+                                    <button type="submit" class="btn btn-primary btn-sm">Create</button>
+                                </div>
                             </form>
                         <?php
                     }

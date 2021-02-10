@@ -46,8 +46,9 @@ require('config.php');
             <!-- Body -->
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">New Transaction</div>
                     <div class="card-body">
+                        <h5>New Transaction</h5>
+                        <br>
                         <?php
                         $baru = $conn->query("SELECT transaksi.*, persediaan.* FROM transaksi, persediaan ORDER BY transaksi.IdTransaksi DESC");
                         $IdTransaksi = mysqli_fetch_array($baru);
@@ -94,7 +95,10 @@ require('config.php');
 
                                     <div class="col-12 form-group">
                                         <label for="Harga">Harga</label>
-                                        <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                            <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
+                                        </div>
                                     </div>
 
                                     <div class="col-12 form-group">

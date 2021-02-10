@@ -64,32 +64,35 @@ include("config.php");
                         }
                         ?>
                         <form role="form" action="persediaan_create.php" method="post" enctype="multipart/form-data">
-                            <div class="form-group mb-3">
+                            <div class=" col-12 form-group mb-3">
                                 <label for="KodeBarang">Kode Barang</label>
                                 <input type="text" name="KodeBarang" id="KodeBarang" class="form-control" value="<?= $format; ?>" readonly>
                             </div>
 
-                            <div class="form-group mb-3">
+                            <div class="col-12 form-group mb-3">
                                 <label for="NamaBarang">Nama Barang</label>
                                 <input type="text" name="NamaBarang" id="NamaBarang" class="form-control">
                             </div>
 
-                            <div class="form-group mb-3">
+                            <div class="col-12 form-group mb-3">
                                 <label for="Deskripsi">Deskripsi</label>
                                 <textarea name="Deskripsi" id="Deskripsi" cols="10" class="form-control"></textarea>
                             </div>
 
-                            <div class="form-group mb-3">
+                            <div class="col-12 form-group mb-3">
                                 <label for="Harga">Harga</label>
-                                <input type="text" name="Harga" id="Harga" class="form-control">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    <input type="text" name="Harga" id="Harga" class="form-control">
+                                </div>
                             </div>
 
-                            <div class="form-group mb-3">
+                            <div class="col-12 form-group mb-3">
                                 <label for="foto">Foto</label>
                                 <input type="file" name="foto" id="foto" required="">
                             </div>
 
-                            <div class="mb-3">
+                            <div class="col-12 mb-3">
                                 <input type="submit" name="Submit" class="btn btn-primary btn-sm" value="Create">
                             </div>
                         </form>

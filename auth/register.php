@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/register.css">
 
     <title>Rdnnrfd Shop | Registrasi</title>
 </head>
@@ -38,15 +38,9 @@
                      VALUES ('$username', '$email', '" . md5($password) . "', '$created_at', '$updated_at')";
                     $result   = mysqli_query($conn, $query);
                     if ($result) {
-                        echo "<div class='form'>
-                  <h3>You are registered successfully.</h3><br/>
-                  <p class='link'>Click here to <a href='login.php'>Login</a></p>
-                  </div>";
+                        echo "<script>alert('You are registered successfully.');window.location='login.php';</script>";
                     } else {
-                        echo "<div class='form'>
-                  <h3>Required fields are missing.</h3><br/>
-                  <p class='link'>Click here to <a href='register.php'>registration</a> again.</p>
-                  </div>";
+                        echo "<script>alert('Required fields are missing.');window.location='register.php';</script>";
                     }
                 } else {
                 ?>

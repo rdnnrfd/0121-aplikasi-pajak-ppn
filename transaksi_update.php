@@ -56,32 +56,35 @@ require('config.php');
                         while ($data = mysqli_fetch_array($result)) {
                         ?>
                             <form action="transaksi_update_aksi.php" method="post" id="transaksi" enctype="multipart/form-data">
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="IdTransaksi">ID Transaksi</label>
                                     <input type="text" name="IdTransaksi" value="<?php echo $data['IdTransaksi']; ?>" class="form-control" readonly>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="TglTransaksi">Tanggal Transaksi</label>
                                     <input type="text" name="TglTransaksi" value="<?php echo $data['TglTransaksi']; ?>" class="form-control" readonly>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="NamaBarang">Nama Barang</label>
                                     <input type="text" class="form-control" name="NamaBarang" value="<?php echo $data['NamaBarang']; ?>" readonly>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="Qty">Qty</label>
                                     <input type="number" class="form-control" name="Qty" value="<?php echo $data['Qty']; ?>">
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <label for="Harga">Harga</label>
-                                    <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                                        <input type="number" class="form-control" name="Harga" value="<?php echo $data['Harga']; ?>" readonly>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-12 form-group">
                                     <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                 </div>
 

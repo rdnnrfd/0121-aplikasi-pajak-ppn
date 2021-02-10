@@ -37,7 +37,7 @@ require('config.php');
 <!-- Content -->
 <div class="container" id="content">
     <article id="beranda" class="container py-5">
-        <h2>Hallo!</h2>
+        <h2>Selamat Datang!</h2>
         <br>
         <ul class="nav justify-content-end">
             <li class="nav-item">
@@ -68,7 +68,7 @@ require('config.php');
 
                                     <small class="text-muted">Harga</small>
                                     <h5><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></h5>
-                                    <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary btn-sm">Detail</a> |
+                                    <a href="persediaan_detail.php?KodeBarang=<?= $data['KodeBarang']; ?>" class="btn btn-secondary btn-sm">Detail</a> |
                                     <a href="transaksi_create.php?id=<?= $data['id']; ?>" class="btn btn-danger btn-sm">Checkout</a>
                                 </div>
                             </div>

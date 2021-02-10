@@ -4,8 +4,8 @@ include("auth/auth_session.php");
 require('config.php');
 
 if ($_GET) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM persediaan WHERE id ='$id'";
+    $KodeBarang = $_GET['KodeBarang'];
+    $sql = "SELECT * FROM persediaan WHERE KodeBarang ='$KodeBarang'";
     $query = mysqli_query($conn, $sql);
     $result = mysqli_fetch_array($query);
 } else {
@@ -69,8 +69,8 @@ if ($_GET) {
                 <div class="container col-lg-9">
                     <br>
                     <?php
-                    $id = $_GET['id'];
-                    $query = mysqli_query($conn, "SELECT * FROM persediaan WHERE id='$id'");
+                    $KodeBarang = $_GET['KodeBarang'];
+                    $query = mysqli_query($conn, "SELECT * FROM persediaan WHERE KodeBarang='$KodeBarang'");
                     while ($data = mysqli_fetch_array($query)) {
                     ?>
                         <div class="card" style="max-width: 900px;">

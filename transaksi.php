@@ -45,7 +45,7 @@ require('config.php');
             <!-- Body -->
 
             <div class="col-md-10">
-                <div class="card">
+                <div class="card col-12">
                     <div class="card-body">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Data Transaksi Penjualan

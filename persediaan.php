@@ -45,7 +45,7 @@ require('config.php');
 
             <!-- Body -->
             <div class="col-md-10">
-                <div class="card">
+                <div class="card col-12">
                     <div class="card-body">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Persediaan Barang
@@ -73,7 +73,7 @@ require('config.php');
                                         <td><?= $data['NamaBarang']; ?></td>
                                         <td><?= "Rp " . number_format($data['Harga'], 2, ",", "."); ?></td>
                                         <td>
-                                            <a href="persediaan_detail.php?id=<?= $data['id']; ?>" class="btn btn-secondary btn-sm">
+                                            <a href="persediaan_detail.php?KodeBarang=<?= $data['KodeBarang']; ?>" class="btn btn-secondary btn-sm">
                                                 <i class="far fa-eye" aria-hidden="true"></i>
                                             </a> |
                                             <a href="persediaan_update.php?KodeBarang=<?= $data['KodeBarang']; ?>" class="btn btn-warning btn-sm">

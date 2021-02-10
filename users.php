@@ -48,11 +48,11 @@ require('config.php');
             </div>
             <!-- Body -->
             <div class="col-md-10">
-                <div class="card">
+                <div class="card col-12">
                     <div class="card-body">
                         <h5 class="d-flex justify-content-between align-items-center">
                             Data User
-                            <a href="user_create.php" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Add User</a>
+                            <a href="user_create.php" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Add User</a>
                         </h5>
                         <br>
                         <table class="table table-hover">
@@ -76,7 +76,7 @@ require('config.php');
                                         <td><?= $data['username'] ?></td>
                                         <td><?= $data['email'] ?></td>
                                         <td>
-                                            <a class="btn btn-danger btn-sm" href="user_delete.php?id=<?= $data['id'] ?>">
+                                            <a class="btn btn-danger btn-sm" href="user_delete.php?id=<?= $data['id'] ?>" onclick="return confirm('Are you sure to delete?')">
                                                 <i class="far fa-trash-alt" aria-hidden="true"></i>
                                             </a>
                                         </td>

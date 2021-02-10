@@ -38,7 +38,7 @@ require('config.php');
     <!-- Content -->
     <div class="container" id="content">
         <article id="beranda" class="container py-5">
-            <h2>Halo <i><?php echo $_SESSION['username']; ?></i> !</h2>
+            <h2>Selamat Datang <i><?php echo $_SESSION['username']; ?></i> !</h2>
             <br>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
